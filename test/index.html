@@ -22,15 +22,13 @@
   <header class="nav-header">
     <nav class="container">
       <ul class="nav-menu">
-        <li role="presentation">
-          <a class="nav-brand" href="./">Home</a>
-          <ul class="sub-menu">
-            <li role="presentation"><a href="#">Images</a></li>
-            <li role="presentation" class="active"><a href="#">About</a></li>
-            <li role="presentation" class="divider"></li>
-            <li role="presentation"><a href="#">Contact Us</a></li>
-          </ul>
-        </li>
+        <li role="presentation" class="nav-brand"><a href="./">Home</a></li>
+        <li role="presentation"><a href="#">Images</a></li>
+        <li role="presentation"><a href="#main">About</a></li>
+        <li role="presentation" class="divider"></li>
+        <li role="presentation"><a href="#">Contact Us</a></li>
+        <li role="presentation">Just text</li>
+        <li role="presentation"><a href="#">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -58,6 +56,33 @@
         </label>
 
         <button type="submit" class="btn btn-default btn-block">Sign in</button>
+      </fieldset>
+    </form>
+
+    <form>
+      <fieldset>
+        <legend>Inputs with symbols</legend>
+        <div class="row">
+          <div class="col-sm-4">
+            <span class="input-combo">
+              <input type="text" name="percent" />
+              <span class="symbol">%</span>
+            </span>
+          </div>
+          <div class="col-sm-4">
+            <span class="input-combo">
+              <span class="symbol">$</span>
+              <input type="text" name="percent" />
+            </span>
+          </div>
+          <div class="col-sm-4">
+            <span class="input-combo">
+              <span class="symbol">$</span>
+              <input type="text" name="percent" />
+              <span class="symbol">.00</span>
+            </span>
+          </div>
+        </div>
       </fieldset>
     </form>
 
@@ -198,6 +223,7 @@
               <input id="rd7" type="radio" name="colour2" value="black" disabled>
               <label for="rd7">Black (disabled)</label>
             </span>
+            <input type="color" />
           </div>
         </div>
 
@@ -361,6 +387,8 @@
         <li>https://tympanus.net/Development/ClickEffects/</li>
         <li>http://leaverou.github.io/stretchy/</li>
         <li>https://github.com/andrew8088/dome/blob/master/src/dome.js</li>
+        <li>https://tympanus.net/Development/MultiLevelPushMenu/index3.html#</li>
+        <li>https://tympanus.net/Development/ResponsiveMultiLevelMenu/index3.html</li>
       </ul>
     </div>
 

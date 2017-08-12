@@ -73,6 +73,7 @@ $nav-menu-weight: 400;
 
 $nav-menu-bg: colour('grey', '100');
 $nav-menu-col: contrast($nav-menu-bg);
+$nav-menu-text-col: contrast($nav-menu-bg);
 $nav-menu-hover-bg: white;
 $nav-menu-hover-col: contrast($nav-menu-hover-bg);
 $nav-menu-active-bg: $nav-menu-hover-bg;
@@ -118,6 +119,9 @@ $fieldset-padding: 10px;
 
 $legend-weight: 700;
 $legend-padding: 3px 7px;
+
+$input-combo-bg: #eee;
+$input-combo-weight: 700;
 
 /*
  * STYLED CHECKBOXES
