@@ -1,0 +1,175 @@
+/*
+ * BREAKPOINTS
+ */
+
+$breakpoints: (
+  'xs': 480px,
+  'sm': 768px,
+  'md': 992px,
+  'lg': 1200px,
+  'xl': 1600px
+);
+
+/*
+ * TYPOGRAPHY
+ */
+
+$base-font-size: 90%;
+$line-height: 1.6;
+$blockquote-padding: 2em;
+
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+
+/*
+ * FONTS
+ */
+
+$base-font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+$heading-font-family: $base-font-family;
+$heading-font-weight: 700;
+$heading-margin-base: 1em;
+$heading-h1-size: 2.2;
+$heading-h2-size: 1.9;
+$heading-h3-size: 1.6;
+$heading-h4-size: 1.3;
+$heading-h5-size: 1;
+$heading-h6-size: 0.7;
+$mono-font-family: Consolas, Monaco, 'Courier New', monospace;
+
+/*
+ * COLOURS
+ */
+
+$base-col: black;
+$base-bg: white;
+$link-col: #145CA4;
+
+$themes: (
+  'default': colour('grey', '300'),
+  'primary': colour('blue', '700'),
+  'secondary': colour('green', '700'),
+  'warning': colour('yellow', '700'),
+  'alert': colour('amber', '700'),
+  'error': colour('red', '700')
+);
+
+/*
+ * GRID
+ */
+
+$columns: 12;
+$gutter: 20px;
+
+/*
+ * NAV
+ */
+
+$nav-header-bg: colour('grey', '100');
+$nav-header-col: contrast($nav-header-bg);
+
+$nav-brand-weight: 700;
+$nav-menu-weight: 400;
+
+$nav-menu-bg: colour('grey', '100');
+$nav-menu-col: contrast($nav-menu-bg);
+$nav-menu-hover-bg: white;
+$nav-menu-hover-col: contrast($nav-menu-hover-bg);
+$nav-menu-active-bg: $nav-menu-hover-bg;
+$nav-menu-active-col: $nav-menu-hover-col;
+
+$nav-button-padding: 16px 10px;
+
+/*
+ * TABLES
+ */
+
+$table-padding: 7px 10px;
+$table-alt-bg: #f8f8f8;
+$table-compact-padding: 3px 5px;
+
+/*
+ * TABS
+ */
+
+$tab-padding: 7px 10px;
+$tab-border: 1px solid #000;
+$tab-radius: 12px;
+$tab-panel-padding: 7px 10px;
+$tab-panel-border: 1px solid #000;
+$tab-panel-min-height: 10em;
+
+/*
+ * FORMS
+ */
+
+$input-padding: 7px 10px;
+$input-col: $base-col;
+$input-bg: $base-bg;
+$input-focus: colour('blue', '700');
+$input-focus-time: 0.1s;
+$input-border: 1px solid #aaa;
+$input-border-radius: 4px;
+$input-focus-border: 1px solid colour('blue', '900');
+
+$fieldset-border: 1px solid black;
+$fieldset-border-radius: 2px;
+$fieldset-padding: 10px;
+
+$legend-weight: 700;
+$legend-padding: 3px 7px;
+
+/*
+ * STYLED CHECKBOXES
+ */
+
+$checkbox-margin: 3px 5px;
+$checkbox-width: 1em;
+$checkbox-height: 1em;
+$checkbox-col: colour('blue', '100');
+$checkbox-col-checked: white;
+$checkbox-focus-col: colour('blue', '200');
+$checkbox-bg: $input-bg;
+$checkbox-bg-checked: colour('blue', '800');
+$checkbox-border: 2px solid white;
+$checkbox-border-radius: 6px;
+$checkbox-vertical-align: top;
+$checkbox-content: '\2713';
+$checkbox-font-family: inherit;
+
+/*
+ * STYLED RADIO BUTTONS
+ */
+
+$radio-margin: 3px 5px;
+$radio-width: 1em;
+$radio-height: 1em;
+$radio-col: colour('blue', '100');
+$radio-col-checked: white;
+$radio-focus-col: colour('blue', '200');
+$radio-bg: $input-bg;
+$radio-bg-checked: colour('blue', '800');
+$radio-border: 2px solid white;
+$radio-vertical-align: top;
+
+/*
+ * BUTTONS
+ */
+
+$button-weight: bold;
+$button-padding: 5px 15px;
+$button-border: none;
+$button-border-radius: 1em;
+$button-invert-border-width: 2px;
+$button-bar-margin: 1em 0;
+
+/*
+ * CALLOUTS
+ */
+
+$callout-padding: 1em;
+$callout-margin: 2em 0;
+$callout-border-radius: 4px;
+$callout-border-width: 4px;
+$callout-bg: #f8f8f8;
+$callout-col: #000;

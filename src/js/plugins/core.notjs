@@ -1,0 +1,73 @@
+/**
+ * DOM handler
+ * @class
+ */
+
+class DOM {
+  /**
+   * Create a new array like object of elements
+   * @constructor
+   */
+  constructor(selector, context) {
+    let elements = selector instanceof Node || selector instanceof Window ? [selector] : [].slice.call(typeof selector == "string" ? (context || document).querySelectorAll(selector) : selector || [])
+    
+    this.length = elements.length
+
+    Object.assign(this, elements)
+  }
+
+  /**
+   * @param {Function} callback A callback to call on each element
+   */
+  each(callback) {
+    // Convert this to Array to use for...of
+    for (let el of Array.from(this)) {
+      callback.call(el)
+    }
+
+    // Return this for chaining
+    return this
+  }
+
+  /**
+   * Add a class to selected elements
+   * @param {String} className The class name to add
+   */
+  addClass(className) {
+    return this.each(() => {
+      this.classList.add(className)
+    })
+  }
+
+  /**
+   * Remove a class from selected elements
+   * @param {String} className The class name to remove
+   */
+  removeClass(className) {
+    return this.each(() => {
+      this.classList.remove(className)
+    })
+  }
+
+  /**
+   * Check to see if the element has a class
+   * (Note: Only checks the first elements if more than one is selected)
+   * @param {String} className The class name to check
+   */
+  hasClass(className) {
+    return this[0].classList.contains(className)
+  }
+
+  /**
+   * Attach an event listener with a callback to the selected elements
+   * @param {String} event Name of event, eg. "click", "mouseover", etc...
+   * @param {Function} callback The function to call when the event is triggered
+   */
+  on(event, callback) {
+    return this.each(() => {
+      this.addEventListener(event, callback, false)
+    })
+  }
+}
+
+export let $ = selector => new DOM(selector)

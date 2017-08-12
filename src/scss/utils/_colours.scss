@@ -1,0 +1,29 @@
+@import 'colours/_function.scss';
+@import 'colours/_contrast.scss';
+
+@each $colour-name, $colour-variants in $colours {
+  @each $colour-variant, $hex-value in $colour-variants {
+    .#{$colour-name}-#{$colour-variant} {
+      color: #{$hex-value};
+    }
+    .bg-#{$colour-name}-#{$colour-variant} {
+      background-color: #{$hex-value};
+      color: contrast($hex-value);
+    }
+  }
+}
+
+.white {
+  color: white;
+}
+.bg-white {
+  background-color: white;
+  color: black;
+}
+.black {
+  color: black;
+}
+.bg-black {
+  background-color: black;
+  color: white;
+}

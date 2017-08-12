@@ -1,0 +1,149 @@
+@import 'utils/colours/_contrast.scss';
+
+.btn {
+  // Reset
+  font-weight: $button-weight;
+  display: inline-block;
+  text-decoration: none;
+  border: $button-border;
+  padding: $button-padding;
+  white-space: normal;
+  border-radius: $button-border-radius;
+  box-shadow: $box-shadow;
+
+  @each $name, $colour in $themes {
+    &.btn-#{$name} {
+      background: #{$colour};
+      color: contrast($colour);
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: darken($colour, 10);
+        color: contrast(darken($colour, 10));
+      }
+
+      &:focus {
+        outline: 1px dotted contrast(darken($colour, 10));
+        outline-offset: -3px;
+      }
+    }
+  }
+
+  &.btn-link {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+    text-decoration: underline;
+    border: 0;
+    border-radius: 0;
+    color: $link-col;
+    box-shadow: none;
+  }
+
+  &.btn-block {
+    display: block;
+    width: 100%;
+  }
+}
+
+.input-btn {
+  display: inline-block;
+
+  @each $name, $colour in $themes {
+    &.input-btn-#{$name} {
+      input[type=radio],
+      input[type=checkbox] {
+        & + label {
+          // Reset
+          text-align: center;
+          display: block;
+          text-decoration: none;
+          border: $button-border;
+          padding: $button-padding;
+          white-space: normal;
+          border-radius: $button-border-radius;
+          box-shadow: $box-shadow;
+          cursor: pointer;
+          font-weight: $button-weight;
+
+          background: #{$colour};
+          color: contrast($colour);
+        }
+
+        &:focus,
+        &:active {
+          & + label {
+            background: darken($colour, 10);
+            color: contrast(darken($colour, 10));
+          }
+        }
+
+        &:checked {
+          & + label {
+            background: lighten($colour, 7);
+            color: contrast(lighten($colour, 7));
+          }
+        }
+
+        &:focus {
+          & + label {
+            outline: 1px dotted contrast(darken($colour, 10));
+            outline-offset: -3px;
+          }
+        }
+      }
+
+      &:hover {
+        input[type=radio],
+        input[type=checkbox] {
+          & + label {
+            background: darken($colour, 10);
+            color: contrast(darken($colour, 10));
+          }
+        }
+      }
+    }
+  }
+}
+
+.btn-bar {
+  display: flex;
+  border-radius: $button-border-radius;
+  box-shadow: $box-shadow;
+  margin: $button-bar-margin;
+
+  .btn,
+  .input-btn {
+    flex-grow: 1;
+    border-radius: 0;
+    margin: 0 1px 0 0;
+    border: 0;
+    box-shadow: none;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
+  .input-btn {
+    input[type=radio],
+    input[type=checkbox] {
+      & + label {
+        border: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  }
+
+  .btn:first-child,
+  .input-btn:first-child input + label {
+    border-radius: $button-border-radius 0 0 $button-border-radius;
+  }
+  .btn:last-child,
+  .input-btn:last-child input + label {
+    border-radius: 0 $button-border-radius $button-border-radius 0;
+  }
+}

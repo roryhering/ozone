@@ -1,0 +1,11 @@
+@import '_map.scss';
+
+@function colour($colour-name, $colour-variant: '500') {
+  $colour: map-get(map-get($colours, $colour-name), $colour-variant);
+  @if $colour {
+    @return $colour;
+  } @else {
+    // Libsass still doesn't seem to support @error
+    @warn "=> ERROR: COLOUR NOT FOUND! <= | Your $colour-name, $colour-variant combination did not match any of the values in the map.";
+  }
+}

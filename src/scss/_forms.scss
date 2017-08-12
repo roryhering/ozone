@@ -1,0 +1,106 @@
+@mixin formInput() {
+  padding: $input-padding;
+  border: $input-border;
+  border-radius: $input-border-radius;
+  box-shadow: inset 0 0 0 -1px $input-focus;
+  background: $input-bg;
+
+  transition: box-shadow $input-focus-time;
+
+  &:focus {
+    border: $input-focus-border;
+    box-shadow: inset 0 0 0 2px $input-focus;
+  }
+
+  &.input-block {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+input {
+  &[type="text"],
+  &[type="email"],
+  &[type="number"],
+  &[type="password"],
+  &[type="select"] {
+    @include formInput();
+  }
+}
+textarea, 
+select {
+  @include formInput();
+}
+
+label {
+  font-weight: normal;
+
+  &[class^="col-"] {
+    text-align: right;
+    padding: $input-padding;
+  }
+}
+
+// See _buttons.scss, _checkbox.scss and _radio.scss for more
+.checkbox, 
+.radio {
+  padding: $input-padding;
+}
+
+.checkbox, 
+.radio,
+.input-btn {
+  position: relative;
+  display: inline-block;
+  min-height: $checkbox-height;
+  padding-left: 0;
+  padding-bottom: 0;
+
+  input[type=radio],
+  input[type=checkbox] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0;
+
+    & + label {
+      cursor: pointer;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      & + label {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+.stacked {
+  margin-bottom: 1em;
+  &>* {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+fieldset {
+  display: block;
+  padding: $fieldset-padding;
+  border: $fieldset-border;
+  border-radius: $fieldset-border-radius;
+
+  legend {
+    font-weight: $legend-weight;
+    padding: $legend-padding;
+  }
+}

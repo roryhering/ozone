@@ -1,0 +1,4 @@
+https://developer.mozilla.org/en/docs/Web/API/MutationObserver
+https://github.com/megawac/MutationObserver.js
+
+https://www.w3.org/2010/Talks/www2010-dsr-diy-aria/#(8)

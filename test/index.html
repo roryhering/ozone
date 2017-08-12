@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ozone Test Page</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link href="../dist/css/ozone.min.css" rel="stylesheet" />
+  <style>
+    [class^="col-"] {
+      border: 1px dotted #aaa;
+    }
+  </style>
+
+  <script src="../dist/js/modernizr.min.js"></script>
+</head>
+
+<body>
+  <header class="nav-header">
+    <nav class="container">
+      <ul class="nav-menu">
+        <li role="presentation">
+          <a class="nav-brand" href="./">Home</a>
+          <ul class="sub-menu">
+            <li role="presentation"><a href="#">Images</a></li>
+            <li role="presentation" class="active"><a href="#">About</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a href="#">Contact Us</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <h1>Ozone Test Page</h1>
+    <p class="lead">Just a happy little shadow that lives in there. If we're going to have animals around we all have to be concerned about them &amp; take care of them. </p>
+
+    <p>Bacon ipsum dolor amet in in deserunt turducken, laboris landjaeger reprehenderit ball tip sausage tempor jowl chicken. Ullamco frankfurter pork, officia non magna picanha irure nulla eiusmod chuck burgdoggen hamburger rump tail. Non occaecat sausage filet<sup>mignon culpa</sup>. Ball tip non picanha, incididunt eiusmod corned beef brisket magna consectetur. Anim nulla shankle, spare ribs chuck leberkas beef biltong nisi consequat salami reprehenderit ut tempor. Et tri-tip minim capicola sunt tenderloin dolor ex ut.</p>
+
+    <p>Tenderloin veniam consectetur nulla ut pancetta, quis aliquip sirloin officia. Picanha nostrud non dolor. Tempor brisket<sub>2</sub> laboris, picanha spare ribs qui pig nostrud swine meatloaf fatback shank aliquip. Aliqua frankfurter picanha ut landjaeger pork belly. Pork boudin dolore turkey, pork chop non shank bresaola burgdoggen elit dolore ham.</p>
+
+    <h2>Forms &amp; Inputs</h2>
+
+    <form>
+      <fieldset>
+        <legend>A compact inline form</legend>
+
+        <input type="email" placeholder="Email" aria-label="Email">
+        <input type="password" placeholder="Password" aria-label="Password">
+
+        <label for="remember">
+            <input id="remember" type="checkbox"> Remember me
+        </label>
+
+        <button type="submit" class="btn btn-default btn-block">Sign in</button>
+      </fieldset>
+    </form>
+
+    <form>
+      <fieldset>
+        <legend>A Stacked Form</legend>
+
+        <div class="stacked">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="Email" required>
+          <span>This is a required field.</span>
+        </div>
+
+        <div class="stacked">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password">
+        </div>
+
+        <div class="stacked">
+          <label for="state">State</label>
+          <select id="state">
+            <option selected>AL</option>
+            <option>CA</option>
+            <option>IL</option>
+          </select>
+        </div>
+
+        <div class="stacked">
+          <label for="remember2">
+          <input id="remember2" type="checkbox"> Remember me
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Sign in</button>
+      </fieldset>
+    </form>
+
+    <form>
+      <fieldset>
+        <legend>Grouped Form</legend>
+        <div class="row row-gutterless">
+          <label class="col-sm-4" for="name">Username</label>
+          <div class="col-sm-4">
+            <input id="name" type="text" class="input-block" placeholder="Username" required>
+          </div>
+          <div class="col-sm-4">
+            <span>This is a required field.</span>
+          </div>
+        </div>
+
+        <div class="row row-gutterless">
+          <label class="col-sm-4" for="password">Password</label>
+          <div class="col-sm-8">
+            <input id="password" type="password" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="row row-gutterless">
+          <label class="col-sm-4" for="email">Email Address</label>
+          <div class="col-sm-8">
+            <input id="email" type="email" placeholder="Email Address">
+          </div>
+        </div>
+
+        <div class="row row-gutterless">
+          <label class="col-sm-4" for="foo">Supercalifragilistic Label</label>
+          <div class="col-sm-8">
+            <input id="foo" type="text" placeholder="Enter something here...">
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row row-gutterless">
+          <div class="col-sm-8 col-offset-sm-4">
+            <label>
+              <input type="checkbox"> I've read the terms and conditions
+            </label>
+          </div>
+        </div>
+
+        <div class="row row-gutterless">
+          <div class="col-sm-8 col-offset-sm-4">
+            <span class="checkbox">
+              <input id="cb1" type="checkbox">
+              <label for="cb1">I've read the terms and conditions</label>
+            </span>
+            <span class="checkbox">
+              <input id="cb2" type="checkbox">
+              <label for="cb2">I've double-checked it again</label>
+            </span>
+            <span class="checkbox">
+              <input id="cb3" type="checkbox" checked disabled>
+              <label for="cb3">Send me lots of spam!</label>
+            </span>
+            <span class="checkbox">
+              <input id="cb4" type="checkbox" disabled>
+              <label for="cb4">Never mind</label>
+            </span>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="row row-gutterless">
+          <label class="col-sm-4">What is your favourite colour?</label>
+          <div class="col-sm-8">
+            <input id="rd1" type="radio" name="colour" value="red" checked>
+            <label for="rd1">Red</label>
+            <br />
+            <input id="rd2" type="radio" name="colour" value="green">
+            <label for="rd2">Green</label>
+            <br />
+            <input id="rd3" type="radio" name="colour" value="blue">
+            <label for="rd3">Blue</label>
+          </div>
+        </div>
+
+        <div class="row row-gutterless">
+          <label class="col-sm-4">What is your favourite colour?</label>
+          <div class="col-sm-8">
+            <span class="radio">
+              <input id="rd4" type="radio" name="colour2" value="red" checked>
+              <label for="rd4">Red</label>
+            </span>
+            <br />
+            <span class="radio">
+              <input id="rd5" type="radio" name="colour2" value="green">
+              <label for="rd5">Green</label>
+            </span>
+            <br />
+            <span class="radio">
+              <input id="rd6" type="radio" name="colour2" value="blue">
+              <label for="rd6">Blue</label>
+            </span>
+            <br />
+            <span class="radio">
+              <input id="rd7" type="radio" name="colour2" value="black" disabled>
+              <label for="rd7">Black (disabled)</label>
+            </span>
+          </div>
+        </div>
+
+        <h2>Checkbox inputs as buttons</h2>
+
+        <p>
+          <span class="input-btn input-btn-default">
+            <input id="cb5" type="checkbox" value="apples" checked>
+            <label for="cb5">Apples</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="cb6" type="checkbox" value="oranges">
+            <label for="cb6">Oranges</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="cb7" type="checkbox" value="grapes">
+            <label for="cb7">Grapes</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="cb8" type="checkbox" value="pineapple" disabled>
+            <label for="cb8">Pineapple</label>
+          </span>
+        </p>
+
+        <h2>Checkbox inputs as buttons in a bar</h2>
+
+        <div class="btn-bar equal-width">
+          <span class="input-btn input-btn-default">
+            <input id="cb9" type="checkbox" value="apples" checked>
+            <label for="cb9">Apples</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="cb10" type="checkbox" value="oranges">
+            <label for="cb10">Oranges</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="cb11" type="checkbox" value="grapes">
+            <label for="cb11">Grapes</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="cb12" type="checkbox" value="pineapple" disabled>
+            <label for="cb12">Pineapple</label>
+          </span>
+        </div>
+
+        <h2>Radio inputs as buttons</h2>
+
+        <p>
+          <span class="input-btn input-btn-default">
+            <input id="rd8" type="radio" name="colour3" value="red" checked>
+            <label for="rd8">Red</label>
+          </span>
+          <span class="input-btn input-btn-default">
+            <input id="rd9" type="radio" name="colour3" value="green">
+            <label for="rd9">Green</label>
+          </span>
+          <span class="input-btn input-btn-primary">
+            <input id="rd10" type="radio" name="colour3" value="blue">
+            <label for="rd10">Blue</label>
+          </span>
+          <span class="input-btn input-btn-primary">
+            <input id="rd11" type="radio" name="colour3" value="black" disabled>
+            <label for="rd11">Black (disabled)</label>
+          </span>
+        </p>
+
+        <h2>Radio inputs as buttons in a bar with equal width</h2>
+
+        <div class="btn-bar">
+          <span class="input-btn input-btn-default equal-width">
+            <input id="rd12" type="radio" name="colour4" value="red" checked>
+            <label for="rd12">Red</label>
+          </span>
+          <span class="input-btn input-btn-default equal-width">
+            <input id="rd13" type="radio" name="colour4" value="green">
+            <label for="rd13">Green</label>
+          </span>
+          <span class="input-btn input-btn-primary equal-width">
+            <input id="rd14" type="radio" name="colour4" value="blue">
+            <label for="rd14">Blue</label>
+          </span>
+          <span class="input-btn input-btn-primary equal-width">
+            <input id="rd15" type="radio" name="colour4" value="black" disabled>
+            <label for="rd15">Black (disabled)</label>
+          </span>
+        </div>
+
+        <h2>Buttons in a bar with equal width</h2>
+
+        <div class="btn-bar">
+          <button type="submit" class="btn btn-default equal-width"><i class="fa fa-check fa-fw" aria-hidden="true"></i> Submit</button>
+          <button type="submit" class="btn btn-primary equal-width"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Primary</button>
+          <button type="submit" class="btn btn-secondary equal-width"><i class="fa fa-minus fa-fw" aria-hidden="true"></i> Secondary</button>
+          <button type="submit" class="btn btn-warning equal-width"><i class="fa fa-info fa-fw" aria-hidden="true"></i> Warning</button>
+          <button type="submit" class="btn btn-alert equal-width"><i class="fa fa-warning fa-fw" aria-hidden="true"></i> Alert</button>
+          <button type="submit" class="btn btn-error equal-width"><i class="fa fa-bomb fa-fw" aria-hidden="true"></i> Error</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <h2>Grid</h2>
+
+    <div class="row">
+      <div class="col-md-12 col-lg-4">
+        <p>Col 4</p>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <p>Col 4</p>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <p>Col 4</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-offset-lg-4">
+        <p>Col 4 (offset 4)</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <p>Col 3</p>
+      </div>
+      <div class="col-md-6 col-offset-md-3">
+        <p>Col 6 (offset 3)</p>
+      </div>
+    </div>
+
+    <div class="row row-gutterless">
+      <div class="col-md-12 col-lg-4">
+        <p>Col 4</p>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <p>Col 4</p>
+      </div>
+      <div class="col-md-12 col-lg-4">
+        <p>Col 4</p>
+      </div>
+    </div>
+
+    <h2>Lists</h2>
+
+    <ol>
+      <li>Bread</li>
+      <li>Milk
+        <ul>
+          <li>Full fat</li>
+          <li>Low fat</li>
+        </ul>
+      </li>
+      <li>Flour</li>
+      <li>Bread</li>
+    </ol>
+
+    <h2>Callouts</h2>
+
+    <div class="callout callout-primary">
+      <ul>
+        <li>https://css-tricks.com/snippets/css/a-guide-to-flexbox/</li>
+        <li>https://tympanus.net/Development/TabStylesInspiration/</li>
+        <li>https://tympanus.net/Development/ProgressButtonStyles/</li>
+        <li>https://tympanus.net/Development/ClickEffects/</li>
+        <li>http://leaverou.github.io/stretchy/</li>
+        <li>https://github.com/andrew8088/dome/blob/master/src/dome.js</li>
+      </ul>
+    </div>
+
+    <h2>Tabs</h2>
+
+    <ul class="tabs tabs-horizontal tabs-left">
+      <li><a href="#section1">Section 1</a></li>
+      <li><a href="#section2">Section 2</a></li>
+      <li><a href="#section3">Section 3</a></li>
+      <li><a href="#section10">Section 10</a></li>
+    </ul>
+    <section id="section1">
+
+      <div class="row row-gutterless">
+        <div class="col-xs-12 col-sm-4">
+          <ul data-layer="tabs" class="tabs-vertical tabs-left">
+            <li><a href="#section4">Section 4</a></li>
+            <li><a href="#section5">Section 5</a></li>
+            <li><a href="#section6">Section 6</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+          <section id="section4">Section 4</section>
+          <section id="section5">Section 5</section>
+          <section id="section6">Section 6</section>
+        </div>
+      </div>
+
+    </section>
+    <section id="section2">Section 2</section>
+    <section id="section3">Section 3</section>
+    <section id="section10">Section 10</section>
+
+    <h2>Tables</h2>
+
+    <table class="table table-default table-rows">
+      <caption>Table (default) with alternate rows</caption>
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+          <th>Column 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-primary table-rows table-compact table-bordered">
+      <caption>Table (primary) with alternate rows, compact and bordered</caption>
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+          <th>Column 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="table table-secondary table-hover">
+      <caption>Table (secondary) with hover</caption>
+      <thead>
+        <tr>
+          <th>Column 1</th>
+          <th>Column 2</th>
+          <th>Column 3</th>
+          <th>Column 4</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+        <tr>
+          <td>Cell 1</td>
+          <td>Cell 2</td>
+          <td>Cell 3</td>
+          <td>Cell 4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Heading 2</h2>
+    <blockquote>
+      <p>We'll put all the little clouds in and let them dance around and have fun. Every day I learn. A thin paint will stick to a thick paint. I'm gonna start with a little Alizarin crimson and a touch of Prussian blue We have all at one time or another mixed some mud.</p>
+      <footer>Reference in a footer goes here</footer>
+    </blockquote>
+
+    <h3>Heading 3</h3>
+    <p>I think there's an artist hidden in the bottom of every single one of us. All you have to learn here is how to have fun. You want your tree to have some character. Make it special. We'll paint one happy little tree right here. In your imagination you can go anywhere you want.</p>
+
+    <hr />
+
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6>
+    <p>We don't want to set these clouds on fire. We're not trying to teach you a thing to copy. We're just here to teach you a technique, then let you loose into the world. Now we can begin working on lots of happy little things.</p>
+
+    <p>Let's make some happy little clouds in our world. This is the fun part It just happens - whether or not you worried about it or tried to plan it.</p>
+  </div>
+
+  <script src="../dist/js/ozone.js"></script>
+
+  <script>
+    o3.ready( function() {
+
+      o3.find(document).on('o3.tabs.started', (data) => {
+        console.log('EVENT: o3.tabs.started', data)
+      }).on('o3.tabs.completed', (data) => {
+        console.log('EVENT: o3.tabs.completed', data)
+      })
+
+      o3.settings({
+        showConsole: true
+      });
+
+      o3.find('.tabs').tabs()
+
+    });
+  </script>
+</body>
+
+</html>

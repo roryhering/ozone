@@ -1,0 +1,117 @@
+body {
+  font-size: $base-font-size;
+  font-family: $base-font-family;
+  line-height: $line-height;
+}
+
+a {
+  color: $link-col;
+}
+
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-justify {
+  text-align: justify;
+}
+
+$headings: (
+  'h1': $heading-h1-size, 
+  'h2': $heading-h2-size, 
+  'h3': $heading-h3-size, 
+  'h4': $heading-h4-size, 
+  'h5': $heading-h5-size, 
+  'h6': $heading-h6-size
+);
+
+@each $heading, $size in $headings {
+  #{$heading}, .#{$heading} {
+    line-height: 100%;
+    font-family: $heading-font-family;
+    font-weight: $heading-font-weight;
+    font-size: $base-font-size * $size;
+    margin: (($heading-margin-base * $size) / 2) 0 (($heading-margin-base * $size) / 2) 0;
+  }
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: $mono-font-family;
+}
+
+ol, ul {
+  margin: 1em 0 1em 2em;
+}
+ul { 
+  list-style-type: disc;
+  list-style-position: inside;
+}
+ol { 
+  list-style-type: decimal; 
+  list-style-position: inside;
+}
+ul ul, ol ul { 
+  list-style-type: circle; 
+  list-style-position: inside; 
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+ol ol, ul ol { 
+  list-style-type: lower-latin; 
+  list-style-position: inside; 
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+p, fieldset {
+  margin: 0 0 1em 0;
+
+  &.lead {
+    font-size: 130%;
+  }
+}
+
+blockquote {
+  padding: $blockquote-padding;
+  position: relative;
+  quotes: "“" "”" "‘" "’";
+
+  &:before,
+  &:after {
+    color: #bbb;
+    display: block;
+    position: absolute;
+    line-height: 0;
+    font-size: 4em;
+  }
+
+  &:before {
+    top: 0.5em;
+    left: 0.1em;
+    content: open-quote;
+  }
+  &:after {
+    top: 100%;
+    right: 0.1em;
+    content: close-quote;
+  }
+
+  *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+hr {
+  margin: 2em 0;
+  height: 1px;
+  background: #aaa;
+  border: none;
+}

@@ -1,0 +1,52 @@
+.radio {
+  input[type=radio] {
+    & + label {
+      &:before {
+        content: '';
+        font-size: $radio-height;
+        display: inline-block;
+        text-align: center;
+        font-weight: 900;
+        padding: 0;
+        color: $radio-col;
+        line-height: 100%;
+        vertical-align: $radio-vertical-align;
+        border: $radio-border;
+        border-radius: 50%;
+        width: $radio-width;
+        height: $radio-height;
+        margin: $radio-margin;
+        background: $radio-bg;
+        transition: all 0.2s;
+        box-shadow: $box-shadow;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      & + label {
+        &:before {
+          box-shadow: 0 0 0 2px $radio-focus-col;
+        }
+      }
+    }
+
+    &:checked {
+      & + label {
+        &:before {
+          color: $radio-col-checked;
+          background: $radio-bg-checked;
+        }
+      }
+    }
+
+    &:disabled {
+      & + label {
+        cursor: not-allowed;
+        &:before {
+          background: $radio-col;
+        }
+      }
+    }
+  }
+}

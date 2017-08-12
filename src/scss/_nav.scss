@@ -1,0 +1,49 @@
+.nav-header {
+  background: $nav-header-bg;
+  color: $nav-header-col;
+}
+
+.nav-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background: $nav-menu-bg;
+  color: contrast($nav-menu-bg);
+
+  display: flex;
+  flex-direction: row;
+
+  .nav-brand {
+    font-size: 120%;
+    font-weight: $nav-brand-weight;
+  }
+
+  .sub-menu {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    a {
+      display: block;
+      text-decoration: none;
+      padding: $nav-button-padding;
+      background: $nav-menu-bg;
+      color: $nav-menu-col;
+
+      &:hover {
+        background: $nav-menu-hover-bg;
+        color: $nav-menu-hover-col;
+      }
+    }
+
+    &.active {
+      a {
+        color: $nav-menu-active-col;
+        background: $nav-menu-active-bg;
+      }
+    }
+  }
+}

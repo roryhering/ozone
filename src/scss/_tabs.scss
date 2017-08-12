@@ -1,0 +1,55 @@
+.tabs[role="tablist"] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+
+  &>li {
+    // Required to detect dynamically inserted nodes
+    animation-duration: 0.001s;
+    animation-name: nodeInserted;
+
+    &>a {
+      display: block;
+      padding: $tab-padding;
+      text-decoration: none;
+      border: $tab-border;
+
+      &[aria-selected="true"] {
+        font-weight: 700;
+      }
+    }
+  }
+
+  &.tabs-horizontal {
+    flex-direction: row;
+
+    &>li {
+      
+      &>a {
+        border-radius: $tab-radius $tab-radius 0 0;
+      }
+    }
+  }
+
+  &.tabs-vertical {
+    flex-direction: column;
+
+    &>li {
+      
+      &>a {
+        border-radius: $tab-radius 0 0 $tab-radius;
+      }
+    }
+  }
+}
+
+[role="tabpanel"] {
+  min-height: $tab-panel-min-height;
+  border: $tab-panel-border;
+  padding: $tab-panel-padding;
+
+  &[aria-hidden="true"] {
+    display: none;
+  }
+}

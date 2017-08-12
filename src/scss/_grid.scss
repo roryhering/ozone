@@ -1,0 +1,81 @@
+.container-fluid {
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+}
+@each $break, $width in $breakpoints {
+  @media screen and (min-width: #{$width}) {
+    .container {
+      max-width: #{$width - ($gutter * 2)};
+    }
+  }
+}
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0 ($gutter / -2) ($gutter / 4) ($gutter / -2);
+
+  &.row-top {
+    align-items: flex-start;
+  }
+  &.row-center {
+    align-items: center;
+  }
+  &.row-bottom {
+    align-items: flex-end;
+  }
+
+  &.row-gutterless {
+    margin: 0;
+
+    & > [class^="col-"] {
+      margin: 0;
+    }
+  }
+}
+
+@mixin grid($break) {
+  @for $i from 1 through $columns {
+    .row {
+      & > .col-#{$break}-#{$i} {
+        margin: 0 ($gutter / 2);
+        box-sizing: border-box;
+        min-height: 1px;
+        width: calc( #{ ($i / $columns) * 100% } - #{$gutter} );
+
+        *:last-child {
+          margin-bottom: 0;
+        }
+      }
+      & > [class^="col-"].col-offset-#{$break}-#{$i} {
+        box-sizing: border-box;
+        margin-left: calc( #{ ($i / $columns) * 100% } + #{$gutter / 2} );
+      }
+    }
+
+    .row.row-gutterless {
+      & > .col-#{$break}-#{$i} {
+        width: (($i / $columns) * 100%);
+      }
+      & > [class^="col-"].col-offset-#{$break}-#{$i} {
+        margin-left: (($i / $columns) * 100%);
+      }
+    }
+  }
+}
+
+@each $break, $width in $breakpoints {
+  @include grid($break);
+
+  body {
+    @media screen and (min-width: #{$width}) {
+      @include grid($break);
+    }
+  }
+}

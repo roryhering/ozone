@@ -1,0 +1,73 @@
+.table {
+  margin: 2em auto;
+  width: 100%;
+
+  @each $name, $colour in $themes {
+    &.table-#{$name} {
+      thead,
+      tfoot {
+        background: #{$colour};
+        color: contrast($colour);
+
+        th {
+          font-weight: 700;
+          border-right: 1px solid $base-bg;
+
+          &:first-child {
+            border-left: 1px solid #{$colour};
+          }
+          &:last-child {
+            border-right: none;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid #{$colour};
+        }
+      }
+
+      // Variants
+      &.table-rows {
+        tbody {
+          tr:nth-child(even) {
+            background: $table-alt-bg;
+          }
+        }
+      }
+
+      &.table-bordered {
+        tbody {
+          th, td {
+            border: 1px solid #{$colour};
+          }
+        }
+      }
+	  }
+  }
+
+  caption {
+    padding: $table-padding;
+    font-style: italic;
+  }
+
+  th, td {
+    padding: $table-padding;
+  }
+
+  // Table variants
+  &.table-compact {
+    th, td {
+      padding: $table-compact-padding;
+    }
+  }
+  &.table-hover {
+    tbody tr:hover {
+      th, td {
+        background: darken($table-alt-bg, 2);
+        color: contrast(darken($table-alt-bg, 2));
+      }
+    }
+  }
+}
