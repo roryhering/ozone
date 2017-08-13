@@ -110,8 +110,8 @@ window.o3 = (function () {
     for (let i = 0; i < this.length; ++i) {
       results.push(callback.call(this, this[i], i))
     }
-    return results.length > 1 ? results : results[0]
-    // return results
+    //return results.length > 1 ? results : results[0]
+    return results
   }
 
   Ozone.prototype.mapOne = function (callback) {
@@ -146,6 +146,27 @@ window.o3 = (function () {
         return el.innerHTML
       })
     }
+  }
+  
+  Ozone.prototype.rect = function () {
+    return this.mapOne((el) => {
+      let rect = el.getBoundingClientRect()
+      return {
+        x: rect.x,
+        y: rect.y,
+        top: rect.top,
+        bottom: rect.bottom,
+        left: rect.left,
+        right: rect.right,
+        width: rect.width,
+        height: rect.height,
+        offsetTop: el.offsetTop,
+        offsetLeft: el.offsetLeft,
+        offsetWidth: el.offsetWidth,
+        offsetHeight: el.offsetHeight,
+        hidden: el.hidden
+      }
+    })
   }
 
   Ozone.prototype.addClass = function (classes) {
@@ -193,6 +214,31 @@ window.o3 = (function () {
       } else {
         return this.mapOne((el) => {
           return el.getAttribute(attr)
+        })
+      }
+    }
+  }
+
+  Ozone.prototype.css = function (attr, val) {
+    if (typeof attr === 'object') {
+      // Object instead of string
+      return this.forEach((el) => {
+        for (let key in attr) {
+          if (attr.hasOwnProperty(key)) {
+            el.style[key.toString()] = attr[key]
+          }
+        }
+      })
+    } else {
+      // String instead of object
+      if (typeof val !== 'undefined') {
+        return this.forEach((el) => {
+          el.style[attr] = val
+        })
+      } else {
+        return this.mapOne((el) => {
+          const win = el.ownerDocument.defaultView
+          return win.getComputedStyle(el, null)[attr]
         })
       }
     }

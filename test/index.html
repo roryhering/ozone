@@ -20,7 +20,8 @@
 
 <body>
   <header class="nav-header">
-    <nav class="container">
+    <nav aria-label="Site" class="container">
+      <button class="btn btn-primary" aria-expanded="false">Menu</button>
       <ul class="nav-menu">
         <li role="presentation" class="nav-brand"><a href="./">Home</a></li>
         <li role="presentation"><a href="#">Images</a></li>
@@ -389,6 +390,7 @@
         <li>https://github.com/andrew8088/dome/blob/master/src/dome.js</li>
         <li>https://tympanus.net/Development/MultiLevelPushMenu/index3.html#</li>
         <li>https://tympanus.net/Development/ResponsiveMultiLevelMenu/index3.html</li>
+        <li>https://github.com/oneuijs/You-Dont-Need-jQuery#css--style</li>
       </ul>
     </div>
 
@@ -555,6 +557,8 @@
       });
 
       o3.find('.tabs').tabs()
+
+      console.log( o3.find('nav').rect() )
 
     });
   </script>
