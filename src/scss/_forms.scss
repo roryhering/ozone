@@ -4,7 +4,7 @@
   opacity: 0.8; // Firefox :(
 }
 
-@mixin formInput() {
+.input {
   padding: $input-padding;
   border: $input-border;
   border-radius: $input-border-radius;
@@ -17,11 +17,6 @@
   &:focus {
     border: $input-focus-border;
     box-shadow: inset 0 0 0 2px $input-focus;
-
-    &::placeholder {
-      text-align: right;
-      vertical-align: bottom;
-    }
   }
 
   &.input-block {
@@ -29,21 +24,6 @@
     width: 100%;
     box-sizing: border-box;
   }
-}
-
-input {
-  &[type="text"],
-  &[type="email"],
-  &[type="number"],
-  &[type="password"],
-  &[type="select"],
-  &[type="color"] {
-    @include formInput();
-  }
-}
-textarea, 
-select {
-  @include formInput();
 }
 
 .input-combo {

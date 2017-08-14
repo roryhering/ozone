@@ -6,8 +6,7 @@ $breakpoints: (
   'xs': 480px,
   'sm': 768px,
   'md': 992px,
-  'lg': 1200px,
-  'xl': 1600px
+  'lg': 1200px
 );
 
 /*
@@ -16,7 +15,12 @@ $breakpoints: (
 
 $base-font-size: 90%;
 $line-height: 1.6;
-$blockquote-padding: 2em;
+
+$blockquote-padding: 1em 2.5em;
+$blockquote-background: #f8f8f8;
+$blockquote-col: contrast($blockquote-background);
+$blockquote-border: none;
+$blockquote-border-radius: 1em;
 
 $box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
@@ -41,8 +45,8 @@ $mono-font-family: Consolas, Monaco, 'Courier New', monospace;
  * COLOURS
  */
 
-$base-col: black;
 $base-bg: white;
+$base-col: contrast($base-bg);
 $link-col: #145CA4;
 
 $themes: (

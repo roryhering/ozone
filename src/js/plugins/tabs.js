@@ -39,7 +39,8 @@
 
         /*
         {
-          fit: false
+          fit: false,
+          show: 0
         }
         */
       }
@@ -49,14 +50,138 @@
   // Create the component
   let create = function (el, opts) {
 
-    o3.trigger(EVENT.STARTED, el, {})
+    let panels = []
+
+    // Send the started event
+    o3.fireEvent(EVENT.STARTED, el, {})
     console.log('tab', el, opts)
+
+    // Convert element to Ozone object
+    let tablist = o3.find(el)
+
+    if (tablist.attr('role') !== 'tablist') {
+    
+      // Assign the tablist role
+      tablist.attr({
+        role: 'tablist'
+      })
+
+      // List items are presentation only
+      tablist.find(':scope > li').attr({
+        role: 'presentation'
+      })
+
+      // Connect each link to their element
+      tablist.find(':scope > li a').forEach((el) => {
+
+        el = o3.find(el)
+        el.attr({
+          role: 'tab',
+          tabindex: '-1',
+          'aria-controls': el.attr('href').substring(1)
+        })
+
+        el.on('click', (event) => {
+
+          event.preventDefault()
+          let tab = o3.find(event.target)
+          
+          // Reset the tabs
+          tablist.find(':scope > li [role="tab"]').attr({
+            tabindex: '-1',
+            'aria-selected': null
+          })
+
+          // Set the current one
+          tab.attr({
+            tabindex: '0',
+            'aria-selected': true
+          })
+
+          // Reset the panels
+          for (let i = 0, imax = panels.length; i < imax; ++i) {
+            let panel = o3.find(panels[i])
+            panel.attr({
+              'aria-hidden': true
+            })
+          }
+
+          // Show the correct panel
+          o3.find(el.attr('href')).attr({
+            'aria-hidden': null
+          })
+
+        })
+
+        // Keyboard interaction
+        el.on('keydown', (event) => {
+          let target = undefined
+          let selected = o3.find(event.target).closest('[role="tablist"]').find('[aria-selected="true"]')
+          let prev = selected.closest('li').prev().find('[role="tab"]')
+          let next = selected.closest('li').next().find('[role="tab"]')
+          
+          // Determine the direction
+          switch (event.keyCode) {
+            case 37:
+            case 38:
+              target = prev
+              break
+            case 39:
+            case 40:
+              target = next
+              break
+            default:
+              target = undefined
+              break
+          }
+
+          if (target && target.length) {
+            event.preventDefault()
+            target.focus().trigger('click')
+          }
+        })
+
+        // Set the tab panel role
+        let panel = o3.find(el.attr('href'))
+        panel.attr({
+          role: 'tabpanel'
+        })
+
+        // Make the first child of the tabpanel focusable
+        let firstEl = (panel[0].children.length > 0) ? o3.find(panel[0].children[0]) : panel
+        firstEl.attr({
+          tabindex: '0'
+        })
+
+        // Save for later
+        panels.push(panel)
+      })
+
+      // Automatically select the first one
+      let selectedIndex = 0
+      let selectedTab = tablist.find(':scope > li') //:eq(' + selectedIndex + ') a')
+      selectedTab = o3.find(selectedTab[selectedIndex]).find(':scope > a')
+      selectedTab.attr({
+        'aria-selected': 'true',
+        tabindex: '0'
+      })
+
+      // Hide all panels (except for the selected panel)
+      for (let i = 0, imax = panels.length; i < imax; ++i) {
+        let panel = o3.find(panels[i])
+        if (i !== selectedIndex) {
+          panel.attr({
+            'aria-hidden': true
+          })
+        }
+      }
+    }
 
     if (settings.showConsole) {
       console.log('%cTabs created', settings.style.log)
     }
 
-    o3.trigger(EVENT.COMPLETED, el, {})
+    o3.fireEvent(EVENT.COMPLETED, el, {})
   }
 
   // Remove the component

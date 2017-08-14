@@ -1,23 +1,51 @@
-if (typeof Array.prototype.indexOf !== 'function') {
-  Array.prototype.indexOf = function (item) {
-    for (let i = 0; i < this.length; ++i) {
-      if (this[i] === item) {
-        return i
+/*
+ * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
+ */
+
+/*
+(function() {
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector
+
+    if (!Element.prototype.closest) {
+      Element.prototype.closest = function (el, selector) {
+        var ancestor = this
+        if (!document.documentElement.contains(el)) return null
+        do {
+          if (ancestor.matches(selector)) return ancestor
+          ancestor = ancestor.parentElement
+        } while (ancestor !== null)
+        return el
       }
     }
-    return -1
   }
-}
+})(),
+*/
 
 (function () {
+  if (typeof Array.prototype.indexOf !== 'function') {
+    Array.prototype.indexOf = function (item) {
+      for (let i = 0; i < this.length; ++i) {
+        if (this[i] === item) {
+          return i
+        }
+      }
+      return -1
+    }
+  }
+})(),
 
+/*
+ * https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent
+ */
+(function () {
   if (typeof window.CustomEvent === 'function') return false
 
   function CustomEvent(event, params) {
-    params = params || { 
-      bubbles: false, 
-      cancelable: false, 
-      detail: undefined 
+    params = params || {
+      bubbles: false,
+      cancelable: false,
+      detail: undefined
     }
     let evt = document.createEvent('CustomEvent')
     evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail)
@@ -27,8 +55,38 @@ if (typeof Array.prototype.indexOf !== 'function') {
   CustomEvent.prototype = window.Event.prototype
 
   window.CustomEvent = CustomEvent
-})()
+})(),
 
+/*
+ * https://stackoverflow.com/questions/6481612/queryselector-search-immediate-children#answer-17989803
+ */
+(function (doc, proto) {
+  try {
+    doc.querySelector(':scope body')
+  } catch (err) {
+    ['querySelector', 'querySelectorAll'].forEach(function (method) {
+      let native = proto[method]
+      proto[method] = function (selector) {
+        if (/(^|,)\s*:scope/.test(selector)) {
+          let id = this.id
+          this.id = 'ID_' + new Date().getTime()
+          selector = selector.replace(/((^|,)\s*):scope/g, '$1#' + this.id)
+          let result = doc[method](selector)
+          this.id = id
+          return result
+        } else {
+          return native.call(this, selector)
+        }
+      }
+    })
+  }
+})(window.document, Element.prototype),
+
+/*
+ * Ozone is based on the work of Andrew Burgess
+ * 
+ * https://github.com/andrew8088/dome/blob/master/src/dome.js
+ */
 window.o3 = (function () {
 
   const VERSION = '0.0.1'
@@ -37,7 +95,8 @@ window.o3 = (function () {
     showConsole: false,
     eventPrefix: 'o3',
     dataAttribute: 'layer',
-    dataAttributeTabs: 'tabs'
+    dataAttributeTabs: 'tabs',
+    dataAttributeMenu: 'menu'
   }
 
   let _system = {
@@ -52,6 +111,10 @@ window.o3 = (function () {
       width: screen.width,
       height: screen.height
     }
+  }
+
+  if (!Element.prototype.matches) {
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector
   }
 
   let styles = {
@@ -84,7 +147,7 @@ window.o3 = (function () {
 
   // Window resize
   window.addEventListener('resize', debounce(() => {
-    _system.browser.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+    _system.browser.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
     _system.browser.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
   }, 250))
 
@@ -93,6 +156,24 @@ window.o3 = (function () {
       this[i] = els[i]
     }
     this.length = els.length
+  }
+
+  /* =================
+   * Mutation Observer
+   * =================
+   */
+
+  let MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver
+
+  let observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      console.log(mutation.type)
+    })
+  })
+  let observerConfig = {
+    attributes: false,
+    childList: true,
+    characterData: false
   }
 
   /* =====
@@ -124,6 +205,12 @@ window.o3 = (function () {
    * ================
    */
 
+  Ozone.prototype.mutation = function () {
+    return this.forEach((el) => {
+      observer.observe(el, observerConfig)
+    })
+  }
+
   Ozone.prototype.text = function (text) {
     if (typeof text !== 'undefined') {
       return this.forEach((el) => {
@@ -147,7 +234,7 @@ window.o3 = (function () {
       })
     }
   }
-  
+
   Ozone.prototype.rect = function () {
     return this.mapOne((el) => {
       let rect = el.getBoundingClientRect()
@@ -201,7 +288,7 @@ window.o3 = (function () {
       return this.forEach((el) => {
         for (let key in attr) {
           if (attr.hasOwnProperty(key)) {
-            el.setAttribute(key.toString(), attr[key].toString())
+            el.setAttribute(key.toString(), attr[key])
           }
         }
       })
@@ -312,9 +399,61 @@ window.o3 = (function () {
     }
   }())
 
+  Ozone.prototype.find = function (selector, context) {
+    return o3.find(selector, context, this[0])
+  }
+
+  Ozone.prototype.closest = function(selector) {
+    let ancestor = this[0]
+    do {
+      if (ancestor.matches(selector)) {
+        return o3.find(ancestor)
+      }
+      ancestor = ancestor.parentNode
+    } while (ancestor !== null)
+    return this
+  }
+
+  Ozone.prototype.prev = function() {
+    let el = this[0]
+    while ((el = el.previousSibling)) {
+      if (el.nodeType === 1) {
+        return o3.find(el)
+      }
+    }
+    return this
+  }
+
+  Ozone.prototype.next = function() {
+    let el = this[0]
+    while ((el = el.nextSibling)) {
+      if (el.nodeType === 1) {
+        return o3.find(el)
+      }
+    }
+    return this
+  }
+
+  Ozone.prototype.focus = function() {
+    this[0].focus()
+    return this
+  }
+
+  Ozone.prototype.trigger = function(type) {
+    return this.forEach((el) => {
+      o3.fireEvent(type, el)
+    })
+  }
+
   let o3 = {
-    find: (selector, context) => {
+    find: function (selector, context, parent) {
       let els
+      if (context) {
+        context = context[0]
+      } 
+      if (context === undefined && parent) {
+        context = parent
+      }
       if (typeof selector === 'string') {
         els = selector instanceof Node || selector instanceof Window ? [selector] : [].slice.call(typeof selector == 'string' ? (context || document).querySelectorAll(selector) : selector || [])
       } else if (selector.length) {
@@ -363,7 +502,7 @@ window.o3 = (function () {
         Ozone.prototype[name] = fn
       }
     },
-    trigger: function (type, el, obj) {
+    fireEvent: function (type, el, obj) {
       let evt = new CustomEvent(type, {
         detail: obj,
         bubbles: true,
@@ -371,13 +510,13 @@ window.o3 = (function () {
       })
       el.dispatchEvent(evt)
     },
-    ready: function(fn) {
+    ready: function (fn) {
       if (document.readyState !== 'loading') {
         fn()
       } else if (document.addEventListener) {
         document.addEventListener('DOMContentLoaded', fn)
       } else {
-        document.attachEvent('onreadystatechange', function() {
+        document.attachEvent('onreadystatechange', function () {
           if (document.readyState != 'loading')
             fn()
         })

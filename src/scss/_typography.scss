@@ -81,6 +81,10 @@ p, fieldset {
 
 blockquote {
   padding: $blockquote-padding;
+  background: $blockquote-background;
+  color: $blockquote-col;
+  border: $blockquote-border;
+  border-radius: $blockquote-border-radius;
   position: relative;
   quotes: "“" "”" "‘" "’";
 

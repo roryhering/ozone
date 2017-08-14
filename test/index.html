@@ -37,11 +37,86 @@
   <div class="container">
 
     <h1>Ozone Test Page</h1>
+
     <p class="lead">Just a happy little shadow that lives in there. If we're going to have animals around we all have to be concerned about them &amp; take care of them. </p>
 
     <p>Bacon ipsum dolor amet in in deserunt turducken, laboris landjaeger reprehenderit ball tip sausage tempor jowl chicken. Ullamco frankfurter pork, officia non magna picanha irure nulla eiusmod chuck burgdoggen hamburger rump tail. Non occaecat sausage filet<sup>mignon culpa</sup>. Ball tip non picanha, incididunt eiusmod corned beef brisket magna consectetur. Anim nulla shankle, spare ribs chuck leberkas beef biltong nisi consequat salami reprehenderit ut tempor. Et tri-tip minim capicola sunt tenderloin dolor ex ut.</p>
 
     <p>Tenderloin veniam consectetur nulla ut pancetta, quis aliquip sirloin officia. Picanha nostrud non dolor. Tempor brisket<sub>2</sub> laboris, picanha spare ribs qui pig nostrud swine meatloaf fatback shank aliquip. Aliqua frankfurter picanha ut landjaeger pork belly. Pork boudin dolore turkey, pork chop non shank bresaola burgdoggen elit dolore ham.</p>
+
+    <h2>Tabs</h2>
+
+    <ul class="tabs tabs-horizontal tabs-left">
+      <li><a href="#section1">Section 1</a></li>
+      <li><a href="#section2">Section 2</a></li>
+      <li><a href="#section3">Section 3</a></li>
+      <li><a href="#section10">Section 10</a></li>
+    </ul>
+    <section id="section1">
+
+      <div class="row row-gutterless">
+        <div class="col-xs-12 col-sm-4">
+          <ul data-layer="tabs" class="tabs-vertical tabs-left">
+            <li><a href="#section4">Section 4</a></li>
+            <li><a href="#section5">Section 5</a></li>
+            <li><a href="#section6">Section 6</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+          <section id="section4">
+            <h3>Section 4</h3>
+          </section>
+          <section id="section5">Section 5</section>
+          <section id="section6">Section 6</section>
+        </div>
+      </div>
+
+    </section>
+    <section id="section2">Section 2</section>
+    <section id="section3">Section 3</section>
+    <section id="section10">Section 10</section>
+
+    <h2>Menu button</h2>
+
+    <div class="" data-layer="menu">
+      <button class="btn btn-default">Menu</button>
+      <ul>
+        <li>
+          <a href="#">CSS</a>
+          <ul>
+            <li><a href="#">Introduction</a></li>
+            <li><a href="#">Colours</a></li>
+            <li><a href="#">Grid</a></li>
+            <li><a href="#">Typography</a></li>
+            <li><a href="#">Forms</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">JavaScript</a>
+          <ul>
+            <li><a href="#">Introduction</a></li>
+            <li>
+              <a href="#">Ozone Core</a>
+              <ul>
+                <li><a href="#">If it looks like jQuery&hellip;</a></li>
+                <li><a href="#">Writing plugins</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Tabs</a></li>
+            <li><a href="#">Menu</a></li>
+            <li><a href="#">Compiling</a></li>
+          </ul>
+        </li>
+        <li class="divider"></li>
+        <li>
+          More
+          <ul>
+            <li><a href="#">Credits</a></li>
+            <li><a href="#">Final thoughts</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
     <h2>Forms &amp; Inputs</h2>
 
@@ -49,11 +124,11 @@
       <fieldset>
         <legend>A compact inline form</legend>
 
-        <input type="email" placeholder="Email" aria-label="Email">
-        <input type="password" placeholder="Password" aria-label="Password">
+        <input class="input" type="email" placeholder="Email" aria-label="Email">
+        <input class="input" type="password" placeholder="Password" aria-label="Password">
 
         <label for="remember">
-            <input id="remember" type="checkbox"> Remember me
+            <input class="input" id="remember" type="checkbox"> Remember me
         </label>
 
         <button type="submit" class="btn btn-default btn-block">Sign in</button>
@@ -66,20 +141,20 @@
         <div class="row">
           <div class="col-sm-4">
             <span class="input-combo">
-              <input type="text" name="percent" />
+              <input class="input" type="text" name="percent" />
               <span class="symbol">%</span>
             </span>
           </div>
           <div class="col-sm-4">
             <span class="input-combo">
               <span class="symbol">$</span>
-              <input type="text" name="percent" />
+              <input class="input" type="text" name="percent" />
             </span>
           </div>
           <div class="col-sm-4">
             <span class="input-combo">
               <span class="symbol">$</span>
-              <input type="text" name="percent" />
+              <input class="input" type="text" name="percent" />
               <span class="symbol">.00</span>
             </span>
           </div>
@@ -93,18 +168,18 @@
 
         <div class="stacked">
           <label for="email">Email</label>
-          <input id="email" type="email" placeholder="Email" required>
+          <input class="input" id="email" type="email" placeholder="Email" required>
           <span>This is a required field.</span>
         </div>
 
         <div class="stacked">
           <label for="password">Password</label>
-          <input id="password" type="password" placeholder="Password">
+          <input class="input" id="password" type="password" placeholder="Password">
         </div>
 
         <div class="stacked">
           <label for="state">State</label>
-          <select id="state">
+          <select class="input" id="state">
             <option selected>AL</option>
             <option>CA</option>
             <option>IL</option>
@@ -127,7 +202,7 @@
         <div class="row row-gutterless">
           <label class="col-sm-4" for="name">Username</label>
           <div class="col-sm-4">
-            <input id="name" type="text" class="input-block" placeholder="Username" required>
+            <input id="name" type="text" class="input input-block" placeholder="Username" required>
           </div>
           <div class="col-sm-4">
             <span>This is a required field.</span>
@@ -137,21 +212,21 @@
         <div class="row row-gutterless">
           <label class="col-sm-4" for="password">Password</label>
           <div class="col-sm-8">
-            <input id="password" type="password" placeholder="Password">
+            <input class="input" id="password" type="password" placeholder="Password">
           </div>
         </div>
 
         <div class="row row-gutterless">
           <label class="col-sm-4" for="email">Email Address</label>
           <div class="col-sm-8">
-            <input id="email" type="email" placeholder="Email Address">
+            <input class="input" id="email" type="email" placeholder="Email Address">
           </div>
         </div>
 
         <div class="row row-gutterless">
           <label class="col-sm-4" for="foo">Supercalifragilistic Label</label>
           <div class="col-sm-8">
-            <input id="foo" type="text" placeholder="Enter something here...">
+            <input class="input" id="foo" type="text" placeholder="Enter something here...">
           </div>
         </div>
 
@@ -224,7 +299,7 @@
               <input id="rd7" type="radio" name="colour2" value="black" disabled>
               <label for="rd7">Black (disabled)</label>
             </span>
-            <input type="color" />
+            <input class="input" type="color" />
           </div>
         </div>
 
@@ -394,36 +469,6 @@
       </ul>
     </div>
 
-    <h2>Tabs</h2>
-
-    <ul class="tabs tabs-horizontal tabs-left">
-      <li><a href="#section1">Section 1</a></li>
-      <li><a href="#section2">Section 2</a></li>
-      <li><a href="#section3">Section 3</a></li>
-      <li><a href="#section10">Section 10</a></li>
-    </ul>
-    <section id="section1">
-
-      <div class="row row-gutterless">
-        <div class="col-xs-12 col-sm-4">
-          <ul data-layer="tabs" class="tabs-vertical tabs-left">
-            <li><a href="#section4">Section 4</a></li>
-            <li><a href="#section5">Section 5</a></li>
-            <li><a href="#section6">Section 6</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-12 col-sm-8">
-          <section id="section4">Section 4</section>
-          <section id="section5">Section 5</section>
-          <section id="section6">Section 6</section>
-        </div>
-      </div>
-
-    </section>
-    <section id="section2">Section 2</section>
-    <section id="section3">Section 3</section>
-    <section id="section10">Section 10</section>
-
     <h2>Tables</h2>
 
     <table class="table table-default table-rows">
@@ -524,8 +569,10 @@
 
     <h2>Heading 2</h2>
     <blockquote>
-      <p>We'll put all the little clouds in and let them dance around and have fun. Every day I learn. A thin paint will stick to a thick paint. I'm gonna start with a little Alizarin crimson and a touch of Prussian blue We have all at one time or another mixed some mud.</p>
-      <footer>Reference in a footer goes here</footer>
+      <p>A compressed copy of the installer for the shareware version of Doom takes up about 2.39MB of space. Today’s average webpage, meanwhile, requires users to download about 2.3MB worth of data, according to HTTP Archive, a site that tracks website performance and the technologies they use.</p>
+      <footer>
+        <a href="https://www.wired.com/2016/04/average-webpage-now-size-original-doom/" target="_blank">The average webpage is now the size of the Original <em>Doom</em></a>
+      </footer>
     </blockquote>
 
     <h3>Heading 3</h3>
@@ -544,7 +591,13 @@
   <script src="../dist/js/ozone.js"></script>
 
   <script>
+    o3.settings({
+      showConsole: true
+    })
+
     o3.ready( function() {
+
+      /*
 
       o3.find(document).on('o3.tabs.started', (data) => {
         console.log('EVENT: o3.tabs.started', data)
@@ -552,13 +605,13 @@
         console.log('EVENT: o3.tabs.completed', data)
       })
 
-      o3.settings({
-        showConsole: true
-      });
+      
+
+      */
 
       o3.find('.tabs').tabs()
 
-      console.log( o3.find('nav').rect() )
+      // console.log( o3.find('nav').rect() )
 
     });
   </script>
