@@ -17,7 +17,7 @@
         width: $checkbox-width;
         height: $checkbox-height;
         margin: $checkbox-margin;
-        background: $checkbox-bg;
+        background-color: $checkbox-bg;
         transition: all 0.2s;
         box-shadow: $box-shadow;
       }
@@ -36,7 +36,7 @@
       & + label {
         &:before {
           color: $checkbox-col-checked;
-          background: $checkbox-bg-checked;
+          background-color: $checkbox-bg-checked;
         }
       }
     }
@@ -46,7 +46,7 @@
         cursor: not-allowed;
         opacity: 0.5;
         &:before {
-          background: $checkbox-col;
+          background-color: $checkbox-col;
         }
       }
     }

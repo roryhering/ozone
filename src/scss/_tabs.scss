@@ -1,22 +1,37 @@
-[role="tablist"] {
+.tabs[role="tablist"] {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
 
-  &>li {
-    // Required to detect dynamically inserted nodes
-    animation-duration: 0.001s;
-    animation-name: nodeInserted;
-
-    &>a {
+  & > li {
+    
+    & > a {
       display: block;
       padding: $tab-padding;
       text-decoration: none;
       border: $tab-border;
+      background-color: $tab-bg;
+      color: $tab-col;
+      box-shadow: $box-shadow;
 
       &[aria-selected="true"] {
-        font-weight: 700;
+        color: $tab-active-col;
+        background-color: $tab-active-bg;
+        box-shadow: none;
+      }
+
+      &:not([aria-selected="true"]) {
+        &:focus,
+        &:hover {
+          color: $tab-hover-col;
+          background-color: $tab-hover-bg;
+        }
+      }
+
+      &:focus {
+        outline: 1px dotted contrast($tab-active-bg);
+        outline-offset: -3px;
       }
     }
   }
@@ -24,10 +39,20 @@
   &.tabs-horizontal {
     flex-direction: row;
 
-    &>li {
-      
-      &>a {
+    & > li {
+      margin: 0 $tab-margin;
+
+      & > a {
         border-radius: $tab-radius $tab-radius 0 0;
+        border-bottom: none;
+      }
+    }
+
+    &.tabs-bottom {
+      & > li > a {
+        border-radius: 0 0 $tab-radius $tab-radius;
+        border-top: none;
+        border-bottom: $tab-border;
       }
     }
   }
@@ -35,21 +60,50 @@
   &.tabs-vertical {
     flex-direction: column;
 
-    &>li {
-      
-      &>a {
+    & > li {
+      margin: $tab-margin 0;
+
+      & > a {
         border-radius: $tab-radius 0 0 $tab-radius;
+        border-right: none;
+      }
+    }
+
+    &.tabs-right {
+      & > li > a {
+        border-radius: 0 $tab-radius $tab-radius 0;
+        border-left: none;
+        border-right: $tab-border;
       }
     }
   }
 }
 
-[role="tabpanel"] {
+.tab-panels {
   min-height: $tab-panel-min-height;
   border: $tab-panel-border;
-  padding: $tab-panel-padding;
+  border-radius: $tab-panel-border-radius;
+  background-color: $tab-panel-bg;
 
-  &[aria-hidden="true"] {
-    display: none;
+  &.tab-panels-top {
+    border-top: $tab-panel-align-border;
+  }
+  &.tab-panels-left {
+    border-left: $tab-panel-align-border;
+  }
+  &.tab-panels-bottom {
+    border-bottom: $tab-panel-align-border;
+  }
+  &.tab-panels-right {
+    border-right: $tab-panel-align-border;
+  }
+
+  [role="tabpanel"] {
+    color: $tab-panel-col;
+    padding: $tab-panel-padding;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
   }
 }

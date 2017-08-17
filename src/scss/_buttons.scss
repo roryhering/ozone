@@ -13,13 +13,13 @@
 
   @each $name, $colour in $themes {
     &.btn-#{$name} {
-      background: #{$colour};
+      background-color: #{$colour};
       color: contrast($colour);
 
       &:hover,
       &:focus,
       &:active {
-        background: darken($colour, 10);
+        background-color: darken($colour, 10);
         color: contrast(darken($colour, 10));
       }
 
@@ -54,7 +54,8 @@
   @each $name, $colour in $themes {
     &.input-btn-#{$name} {
       input[type=radio],
-      input[type=checkbox] {
+      input[type=checkbox],
+      input[type=file] {
         & + label {
           // Reset
           text-align: center;
@@ -68,21 +69,21 @@
           cursor: pointer;
           font-weight: $button-weight;
 
-          background: #{$colour};
+          background-color: #{$colour};
           color: contrast($colour);
         }
 
         &:focus,
         &:active {
           & + label {
-            background: darken($colour, 10);
+            background-color: darken($colour, 10);
             color: contrast(darken($colour, 10));
           }
         }
 
         &:checked {
           & + label {
-            background: lighten($colour, 7);
+            background-color: lighten($colour, 7);
             color: contrast(lighten($colour, 7));
           }
         }
@@ -99,17 +100,25 @@
         input[type=radio],
         input[type=checkbox] {
           & + label {
-            background: darken($colour, 10);
+            background-color: darken($colour, 10);
             color: contrast(darken($colour, 10));
           }
         }
       }
     }
   }
+
+  &.input-btn-block {
+    display: block;
+    & + label {
+      display: block;
+    }
+  }
 }
 
 .btn-bar {
   display: flex;
+  border: $button-border;
   border-radius: $button-border-radius;
   box-shadow: $box-shadow;
   margin: $button-bar-margin;

@@ -20,9 +20,7 @@ $blockquote-padding: 1em 2.5em;
 $blockquote-background: #f8f8f8;
 $blockquote-col: contrast($blockquote-background);
 $blockquote-border: none;
-$blockquote-border-radius: 1em;
-
-$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+$blockquote-border-radius: 2px;
 
 
 /*
@@ -98,11 +96,24 @@ $table-compact-padding: 3px 5px;
  */
 
 $tab-padding: 7px 10px;
-$tab-border: 1px solid #000;
-$tab-radius: 12px;
+$tab-margin: 2px;
+$tab-border: 1px solid white;
+$tab-radius: 4px;
+$tab-bg: #f8f8f8;
+$tab-col: contrast($tab-bg);
+$tab-hover-bg: #fff;
+$tab-hover-col: contrast($tab-hover-bg);
+$tab-active-bg: #333;
+$tab-active-col: contrast($tab-active-bg);
+
+$tab-panel-bg: #fff;
+$tab-panel-col: contrast($tab-panel-bg);
+$tab-panel-border: 1px solid $tab-active-bg;
+$tab-panel-align-border: 4px solid $tab-active-bg;
+$tab-panel-border-radius: 2px;
 $tab-panel-padding: 7px 10px;
-$tab-panel-border: 1px solid #000;
 $tab-panel-min-height: 10em;
+
 
 /*
  * FORMS
@@ -166,8 +177,8 @@ $radio-vertical-align: top;
 
 $button-weight: bold;
 $button-padding: 5px 15px;
-$button-border: none;
-$button-border-radius: 1em;
+$button-border: 1px solid white;
+$button-border-radius: 1.5em;
 $button-invert-border-width: 2px;
 $button-bar-margin: 1em 0;
 
@@ -181,3 +192,9 @@ $callout-border-radius: 4px;
 $callout-border-width: 4px;
 $callout-bg: #f8f8f8;
 $callout-col: #000;
+
+/*
+ * GLOBALS
+ */
+
+$box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);

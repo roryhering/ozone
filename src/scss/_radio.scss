@@ -16,7 +16,7 @@
         width: $radio-width;
         height: $radio-height;
         margin: $radio-margin;
-        background: $radio-bg;
+        background-color: $radio-bg;
         transition: all 0.2s;
         box-shadow: $box-shadow;
       }
@@ -35,7 +35,7 @@
       & + label {
         &:before {
           color: $radio-col-checked;
-          background: $radio-bg-checked;
+          background-color: $radio-bg-checked;
         }
       }
     }
@@ -44,7 +44,7 @@
       & + label {
         cursor: not-allowed;
         &:before {
-          background: $radio-col;
+          background-color: $radio-col;
         }
       }
     }

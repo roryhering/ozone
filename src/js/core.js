@@ -2,7 +2,6 @@
  * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
  */
 
-/*
 (function() {
   if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector
@@ -20,7 +19,6 @@
     }
   }
 })(),
-*/
 
 (function () {
   if (typeof Array.prototype.indexOf !== 'function') {
@@ -94,9 +92,9 @@ window.o3 = (function () {
   let _settings = {
     showConsole: false,
     eventPrefix: 'o3',
-    dataAttribute: 'layer',
-    dataAttributeTabs: 'tabs',
-    dataAttributeMenu: 'menu'
+    dataAttr: 'ozone',
+    dataAttrTabs: 'tabs',
+    dataAttrMenu: 'menu'
   }
 
   let _system = {
@@ -167,14 +165,15 @@ window.o3 = (function () {
 
   let observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      console.log(mutation.type)
+      console.log('mutation', mutation)
     })
   })
   let observerConfig = {
-    attributes: false,
     childList: true,
-    characterData: false
+    subtree: true
   }
+
+  let mutationElements = []
 
   /* =====
    * UTILS
@@ -200,15 +199,49 @@ window.o3 = (function () {
     return m.length > 1 ? m : m[0]
   }
 
+  Ozone.prototype.mutation = function (handler, options) {
+    mutationElements.push({
+      target: this,
+      options: options,
+      handler: handler
+    })
+    console.log('mutationElements', mutationElements)
+    return this.forEach((el) => {
+      observer.observe(el, observerConfig)
+    })
+  }
+
+  Ozone.prototype.rect = function () {
+    return this.mapOne((el) => {
+      let rect = el.getBoundingClientRect()
+      return {
+        x: rect.x,
+        y: rect.y,
+        top: rect.top,
+        bottom: rect.bottom,
+        left: rect.left,
+        right: rect.right,
+        width: rect.width,
+        height: rect.height,
+        offsetTop: el.offsetTop,
+        offsetLeft: el.offsetLeft,
+        offsetWidth: el.offsetWidth,
+        offsetHeight: el.offsetHeight,
+        hidden: el.hidden
+      }
+    })
+  }
+
   /* ================
    * DOM MANIPULATION
    * ================
    */
 
-  Ozone.prototype.mutation = function () {
-    return this.forEach((el) => {
-      observer.observe(el, observerConfig)
-    })
+  Ozone.prototype.get = function(i) {
+    if (this[i] !== undefined) {
+      return o3.find(this[i])
+    }
+    return this
   }
 
   Ozone.prototype.text = function (text) {
@@ -233,27 +266,6 @@ window.o3 = (function () {
         return el.innerHTML
       })
     }
-  }
-
-  Ozone.prototype.rect = function () {
-    return this.mapOne((el) => {
-      let rect = el.getBoundingClientRect()
-      return {
-        x: rect.x,
-        y: rect.y,
-        top: rect.top,
-        bottom: rect.bottom,
-        left: rect.left,
-        right: rect.right,
-        width: rect.width,
-        height: rect.height,
-        offsetTop: el.offsetTop,
-        offsetLeft: el.offsetLeft,
-        offsetWidth: el.offsetWidth,
-        offsetHeight: el.offsetHeight,
-        hidden: el.hidden
-      }
-    })
   }
 
   Ozone.prototype.addClass = function (classes) {
@@ -331,7 +343,24 @@ window.o3 = (function () {
     }
   }
 
+  Ozone.prototype.data = function (attr, val) {
+    if (typeof val !== 'undefined') {
+      return this.forEach((el) => {
+        el.setAttribute('data-' + attr, val)
+      })
+    } else {
+      return this.mapOne((el) => {
+        return el.getAttribute('data-' + attr)
+      })
+    }
+  }
+
   Ozone.prototype.append = function (els) {
+    if (typeof els === 'string') {
+      let el = document.createElement('div')
+      el.innerHTML = els
+      els = o3.find(el.children)
+    }
     return this.forEach((parEl, i) => {
       els.forEach((childEl) => {
         parEl.appendChild((i > 0) ? childEl.cloneNode(true) : childEl)
@@ -340,6 +369,11 @@ window.o3 = (function () {
   }
 
   Ozone.prototype.prepend = function (els) {
+    if (typeof els === 'string') {
+      let el = document.createElement('div')
+      el.innerHTML = els
+      els = o3.find(el.children)
+    }
     return this.forEach((parEl, i) => {
       for (let j = els.length - 1; j > -1; j--) {
         parEl.insertBefore((i > 0) ? els[j].cloneNode(true) : els[j], parEl.firstChild)

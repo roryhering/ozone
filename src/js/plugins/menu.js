@@ -9,12 +9,12 @@
 
   // Component events
   const EVENT = {
-    STARTED: `${settings.eventPrefix}.${settings.dataAttributeMenu}.started`,
-    COMPLETED: `${settings.eventPrefix}.${settings.dataAttributeMenu}.completed`,
-    CREATED: `${settings.eventPrefix}.${settings.dataAttributeMenu}.created`,
-    REMOVED: `${settings.eventPrefix}.${settings.dataAttributeMenu}.removed`,
-    SHOW: `${settings.eventPrefix}.${settings.dataAttributeMenu}.show`,
-    HIDE: `${settings.eventPrefix}.${settings.dataAttributeMenu}.hide`,
+    STARTED: `${settings.eventPrefix}.${settings.dataAttrMenu}.started`,
+    COMPLETED: `${settings.eventPrefix}.${settings.dataAttrMenu}.completed`,
+    CREATED: `${settings.eventPrefix}.${settings.dataAttrMenu}.created`,
+    REMOVED: `${settings.eventPrefix}.${settings.dataAttrMenu}.removed`,
+    SHOW: `${settings.eventPrefix}.${settings.dataAttrMenu}.show`,
+    HIDE: `${settings.eventPrefix}.${settings.dataAttrMenu}.hide`,
   }
 
   // Add the menu extension: 'this' is inherited from the Ozone prototype (not o3)
@@ -65,7 +65,7 @@
   }
 
   // Prepare data selector
-  let selector = `[data-${settings.dataAttribute}="${settings.dataAttributeMenu}"]`
+  let selector = `[data-${settings.dataAttr}="${settings.dataAttrMenu}"]`
   let elements = o3.find(selector)
 
   // Automatically setup any element matching the selector

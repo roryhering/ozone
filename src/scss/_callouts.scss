@@ -2,7 +2,7 @@
   padding: $callout-padding;
   margin: $callout-margin;
   border-radius: $callout-border-radius;
-  background: $callout-bg;
+  background-color: $callout-bg;
   color: $callout-col;
   
   @each $name, $colour in $themes {

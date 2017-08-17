@@ -2738,6 +2738,9 @@ th {
 /*
  * CALLOUTS
  */
+/*
+ * GLOBALS
+ */
 ::placeholder {
   color: #000;
   font-style: italic;
@@ -2749,7 +2752,7 @@ th {
   border: 1px solid #aaa;
   border-radius: 4px;
   box-shadow: inset 0 0 0 -1px #1976d2;
-  background: white;
+  background-color: white;
   color: #000;
   transition: box-shadow 0.1s;
 }
@@ -2774,7 +2777,7 @@ th {
   padding: 7px 10px;
   border: 1px solid #aaa;
   border-radius: 4px;
-  background: #eee;
+  background-color: #eee;
   color: #000;
   font-weight: 700;
 }
@@ -2827,10 +2830,13 @@ label[class^="col-"] {
 
 .checkbox input[type=radio],
 .checkbox input[type=checkbox],
+.checkbox input[type=file],
 .radio input[type=radio],
 .radio input[type=checkbox],
+.radio input[type=file],
 .input-btn input[type=radio],
-.input-btn input[type=checkbox] {
+.input-btn input[type=checkbox],
+.input-btn input[type=file] {
   position: absolute;
   width: 1px;
   height: 1px;
@@ -2844,29 +2850,38 @@ label[class^="col-"] {
 
 .checkbox input[type=radio] + label,
 .checkbox input[type=checkbox] + label,
+.checkbox input[type=file] + label,
 .radio input[type=radio] + label,
 .radio input[type=checkbox] + label,
+.radio input[type=file] + label,
 .input-btn input[type=radio] + label,
-.input-btn input[type=checkbox] + label {
+.input-btn input[type=checkbox] + label,
+.input-btn input[type=file] + label {
   cursor: pointer;
 }
 
 .checkbox input[type=radio]:disabled,
 .checkbox input[type=checkbox]:disabled,
+.checkbox input[type=file]:disabled,
 .radio input[type=radio]:disabled,
 .radio input[type=checkbox]:disabled,
+.radio input[type=file]:disabled,
 .input-btn input[type=radio]:disabled,
-.input-btn input[type=checkbox]:disabled {
+.input-btn input[type=checkbox]:disabled,
+.input-btn input[type=file]:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 .checkbox input[type=radio]:disabled + label,
 .checkbox input[type=checkbox]:disabled + label,
+.checkbox input[type=file]:disabled + label,
 .radio input[type=radio]:disabled + label,
 .radio input[type=checkbox]:disabled + label,
+.radio input[type=file]:disabled + label,
 .input-btn input[type=radio]:disabled + label,
-.input-btn input[type=checkbox]:disabled + label {
+.input-btn input[type=checkbox]:disabled + label,
+.input-btn input[type=file]:disabled + label {
   opacity: 0.5;
   cursor: not-allowed;
 }
@@ -2909,7 +2924,7 @@ fieldset legend {
   width: 1em;
   height: 1em;
   margin: 3px 5px;
-  background: white;
+  background-color: white;
   transition: all 0.2s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -2920,7 +2935,7 @@ fieldset legend {
 
 .checkbox input[type=checkbox]:checked + label:before {
   color: white;
-  background: #1565c0;
+  background-color: #1565c0;
 }
 
 .checkbox input[type=checkbox]:disabled + label {
@@ -2929,7 +2944,7 @@ fieldset legend {
 }
 
 .checkbox input[type=checkbox]:disabled + label:before {
-  background: #bbdefb;
+  background-color: #bbdefb;
 }
 
 .radio input[type=radio] + label:before {
@@ -2947,7 +2962,7 @@ fieldset legend {
   width: 1em;
   height: 1em;
   margin: 3px 5px;
-  background: white;
+  background-color: white;
   transition: all 0.2s;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
@@ -2958,7 +2973,7 @@ fieldset legend {
 
 .radio input[type=radio]:checked + label:before {
   color: white;
-  background: #1565c0;
+  background-color: #1565c0;
 }
 
 .radio input[type=radio]:disabled + label {
@@ -2966,27 +2981,27 @@ fieldset legend {
 }
 
 .radio input[type=radio]:disabled + label:before {
-  background: #bbdefb;
+  background-color: #bbdefb;
 }
 
 .btn {
   font-weight: bold;
   display: inline-block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .btn.btn-default {
-  background: #e0e0e0;
+  background-color: #e0e0e0;
   color: #000;
 }
 
 .btn.btn-default:hover, .btn.btn-default:focus, .btn.btn-default:active {
-  background: #c7c7c7;
+  background-color: #c7c7c7;
   color: #000;
 }
 
@@ -2996,12 +3011,12 @@ fieldset legend {
 }
 
 .btn.btn-primary {
-  background: #1976d2;
+  background-color: #1976d2;
   color: #FFF;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
-  background: #145ca4;
+  background-color: #145ca4;
   color: #fff;
 }
 
@@ -3011,12 +3026,12 @@ fieldset legend {
 }
 
 .btn.btn-secondary {
-  background: #388e3c;
+  background-color: #388e3c;
   color: #FFF;
 }
 
 .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary:active {
-  background: #2a692d;
+  background-color: #2a692d;
   color: #fff;
 }
 
@@ -3026,12 +3041,12 @@ fieldset legend {
 }
 
 .btn.btn-warning {
-  background: #fbc02d;
+  background-color: #fbc02d;
   color: #000;
 }
 
 .btn.btn-warning:hover, .btn.btn-warning:focus, .btn.btn-warning:active {
-  background: #f0ad05;
+  background-color: #f0ad05;
   color: #000;
 }
 
@@ -3041,12 +3056,12 @@ fieldset legend {
 }
 
 .btn.btn-alert {
-  background: #ffa000;
+  background-color: #ffa000;
   color: #000;
 }
 
 .btn.btn-alert:hover, .btn.btn-alert:focus, .btn.btn-alert:active {
-  background: #cc8000;
+  background-color: #cc8000;
   color: #FFF;
 }
 
@@ -3056,12 +3071,12 @@ fieldset legend {
 }
 
 .btn.btn-error {
-  background: #d32f2f;
+  background-color: #d32f2f;
   color: #FFF;
 }
 
 .btn.btn-error:hover, .btn.btn-error:focus, .btn.btn-error:active {
-  background: #ab2424;
+  background-color: #ab2424;
   color: #fff;
 }
 
@@ -3092,254 +3107,293 @@ fieldset legend {
 }
 
 .input-btn.input-btn-default input[type=radio] + label,
-.input-btn.input-btn-default input[type=checkbox] + label {
+.input-btn.input-btn-default input[type=checkbox] + label,
+.input-btn.input-btn-default input[type=file] + label {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
-  background: #e0e0e0;
+  background-color: #e0e0e0;
   color: #000;
 }
 
 .input-btn.input-btn-default input[type=radio]:focus + label, .input-btn.input-btn-default input[type=radio]:active + label,
 .input-btn.input-btn-default input[type=checkbox]:focus + label,
-.input-btn.input-btn-default input[type=checkbox]:active + label {
-  background: #c7c7c7;
+.input-btn.input-btn-default input[type=checkbox]:active + label,
+.input-btn.input-btn-default input[type=file]:focus + label,
+.input-btn.input-btn-default input[type=file]:active + label {
+  background-color: #c7c7c7;
   color: #000;
 }
 
 .input-btn.input-btn-default input[type=radio]:checked + label,
-.input-btn.input-btn-default input[type=checkbox]:checked + label {
-  background: #f2f2f2;
+.input-btn.input-btn-default input[type=checkbox]:checked + label,
+.input-btn.input-btn-default input[type=file]:checked + label {
+  background-color: #f2f2f2;
   color: #000;
 }
 
 .input-btn.input-btn-default input[type=radio]:focus + label,
-.input-btn.input-btn-default input[type=checkbox]:focus + label {
+.input-btn.input-btn-default input[type=checkbox]:focus + label,
+.input-btn.input-btn-default input[type=file]:focus + label {
   outline: 1px dotted #000;
   outline-offset: -3px;
 }
 
 .input-btn.input-btn-default:hover input[type=radio] + label,
 .input-btn.input-btn-default:hover input[type=checkbox] + label {
-  background: #c7c7c7;
+  background-color: #c7c7c7;
   color: #000;
 }
 
 .input-btn.input-btn-primary input[type=radio] + label,
-.input-btn.input-btn-primary input[type=checkbox] + label {
+.input-btn.input-btn-primary input[type=checkbox] + label,
+.input-btn.input-btn-primary input[type=file] + label {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
-  background: #1976d2;
+  background-color: #1976d2;
   color: #FFF;
 }
 
 .input-btn.input-btn-primary input[type=radio]:focus + label, .input-btn.input-btn-primary input[type=radio]:active + label,
 .input-btn.input-btn-primary input[type=checkbox]:focus + label,
-.input-btn.input-btn-primary input[type=checkbox]:active + label {
-  background: #145ca4;
+.input-btn.input-btn-primary input[type=checkbox]:active + label,
+.input-btn.input-btn-primary input[type=file]:focus + label,
+.input-btn.input-btn-primary input[type=file]:active + label {
+  background-color: #145ca4;
   color: #fff;
 }
 
 .input-btn.input-btn-primary input[type=radio]:checked + label,
-.input-btn.input-btn-primary input[type=checkbox]:checked + label {
-  background: #2988e6;
+.input-btn.input-btn-primary input[type=checkbox]:checked + label,
+.input-btn.input-btn-primary input[type=file]:checked + label {
+  background-color: #2988e6;
   color: #000;
 }
 
 .input-btn.input-btn-primary input[type=radio]:focus + label,
-.input-btn.input-btn-primary input[type=checkbox]:focus + label {
+.input-btn.input-btn-primary input[type=checkbox]:focus + label,
+.input-btn.input-btn-primary input[type=file]:focus + label {
   outline: 1px dotted #fff;
   outline-offset: -3px;
 }
 
 .input-btn.input-btn-primary:hover input[type=radio] + label,
 .input-btn.input-btn-primary:hover input[type=checkbox] + label {
-  background: #145ca4;
+  background-color: #145ca4;
   color: #fff;
 }
 
 .input-btn.input-btn-secondary input[type=radio] + label,
-.input-btn.input-btn-secondary input[type=checkbox] + label {
+.input-btn.input-btn-secondary input[type=checkbox] + label,
+.input-btn.input-btn-secondary input[type=file] + label {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
-  background: #388e3c;
+  background-color: #388e3c;
   color: #FFF;
 }
 
 .input-btn.input-btn-secondary input[type=radio]:focus + label, .input-btn.input-btn-secondary input[type=radio]:active + label,
 .input-btn.input-btn-secondary input[type=checkbox]:focus + label,
-.input-btn.input-btn-secondary input[type=checkbox]:active + label {
-  background: #2a692d;
+.input-btn.input-btn-secondary input[type=checkbox]:active + label,
+.input-btn.input-btn-secondary input[type=file]:focus + label,
+.input-btn.input-btn-secondary input[type=file]:active + label {
+  background-color: #2a692d;
   color: #fff;
 }
 
 .input-btn.input-btn-secondary input[type=radio]:checked + label,
-.input-btn.input-btn-secondary input[type=checkbox]:checked + label {
-  background: #42a847;
+.input-btn.input-btn-secondary input[type=checkbox]:checked + label,
+.input-btn.input-btn-secondary input[type=file]:checked + label {
+  background-color: #42a847;
   color: #FFF;
 }
 
 .input-btn.input-btn-secondary input[type=radio]:focus + label,
-.input-btn.input-btn-secondary input[type=checkbox]:focus + label {
+.input-btn.input-btn-secondary input[type=checkbox]:focus + label,
+.input-btn.input-btn-secondary input[type=file]:focus + label {
   outline: 1px dotted #fff;
   outline-offset: -3px;
 }
 
 .input-btn.input-btn-secondary:hover input[type=radio] + label,
 .input-btn.input-btn-secondary:hover input[type=checkbox] + label {
-  background: #2a692d;
+  background-color: #2a692d;
   color: #fff;
 }
 
 .input-btn.input-btn-warning input[type=radio] + label,
-.input-btn.input-btn-warning input[type=checkbox] + label {
+.input-btn.input-btn-warning input[type=checkbox] + label,
+.input-btn.input-btn-warning input[type=file] + label {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
-  background: #fbc02d;
+  background-color: #fbc02d;
   color: #000;
 }
 
 .input-btn.input-btn-warning input[type=radio]:focus + label, .input-btn.input-btn-warning input[type=radio]:active + label,
 .input-btn.input-btn-warning input[type=checkbox]:focus + label,
-.input-btn.input-btn-warning input[type=checkbox]:active + label {
-  background: #f0ad05;
+.input-btn.input-btn-warning input[type=checkbox]:active + label,
+.input-btn.input-btn-warning input[type=file]:focus + label,
+.input-btn.input-btn-warning input[type=file]:active + label {
+  background-color: #f0ad05;
   color: #000;
 }
 
 .input-btn.input-btn-warning input[type=radio]:checked + label,
-.input-btn.input-btn-warning input[type=checkbox]:checked + label {
-  background: #fccb50;
+.input-btn.input-btn-warning input[type=checkbox]:checked + label,
+.input-btn.input-btn-warning input[type=file]:checked + label {
+  background-color: #fccb50;
   color: #000;
 }
 
 .input-btn.input-btn-warning input[type=radio]:focus + label,
-.input-btn.input-btn-warning input[type=checkbox]:focus + label {
+.input-btn.input-btn-warning input[type=checkbox]:focus + label,
+.input-btn.input-btn-warning input[type=file]:focus + label {
   outline: 1px dotted #000;
   outline-offset: -3px;
 }
 
 .input-btn.input-btn-warning:hover input[type=radio] + label,
 .input-btn.input-btn-warning:hover input[type=checkbox] + label {
-  background: #f0ad05;
+  background-color: #f0ad05;
   color: #000;
 }
 
 .input-btn.input-btn-alert input[type=radio] + label,
-.input-btn.input-btn-alert input[type=checkbox] + label {
+.input-btn.input-btn-alert input[type=checkbox] + label,
+.input-btn.input-btn-alert input[type=file] + label {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
-  background: #ffa000;
+  background-color: #ffa000;
   color: #000;
 }
 
 .input-btn.input-btn-alert input[type=radio]:focus + label, .input-btn.input-btn-alert input[type=radio]:active + label,
 .input-btn.input-btn-alert input[type=checkbox]:focus + label,
-.input-btn.input-btn-alert input[type=checkbox]:active + label {
-  background: #cc8000;
+.input-btn.input-btn-alert input[type=checkbox]:active + label,
+.input-btn.input-btn-alert input[type=file]:focus + label,
+.input-btn.input-btn-alert input[type=file]:active + label {
+  background-color: #cc8000;
   color: #FFF;
 }
 
 .input-btn.input-btn-alert input[type=radio]:checked + label,
-.input-btn.input-btn-alert input[type=checkbox]:checked + label {
-  background: #ffad24;
+.input-btn.input-btn-alert input[type=checkbox]:checked + label,
+.input-btn.input-btn-alert input[type=file]:checked + label {
+  background-color: #ffad24;
   color: #000;
 }
 
 .input-btn.input-btn-alert input[type=radio]:focus + label,
-.input-btn.input-btn-alert input[type=checkbox]:focus + label {
+.input-btn.input-btn-alert input[type=checkbox]:focus + label,
+.input-btn.input-btn-alert input[type=file]:focus + label {
   outline: 1px dotted #FFF;
   outline-offset: -3px;
 }
 
 .input-btn.input-btn-alert:hover input[type=radio] + label,
 .input-btn.input-btn-alert:hover input[type=checkbox] + label {
-  background: #cc8000;
+  background-color: #cc8000;
   color: #FFF;
 }
 
 .input-btn.input-btn-error input[type=radio] + label,
-.input-btn.input-btn-error input[type=checkbox] + label {
+.input-btn.input-btn-error input[type=checkbox] + label,
+.input-btn.input-btn-error input[type=file] + label {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: none;
+  border: 1px solid white;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1em;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
-  background: #d32f2f;
+  background-color: #d32f2f;
   color: #FFF;
 }
 
 .input-btn.input-btn-error input[type=radio]:focus + label, .input-btn.input-btn-error input[type=radio]:active + label,
 .input-btn.input-btn-error input[type=checkbox]:focus + label,
-.input-btn.input-btn-error input[type=checkbox]:active + label {
-  background: #ab2424;
+.input-btn.input-btn-error input[type=checkbox]:active + label,
+.input-btn.input-btn-error input[type=file]:focus + label,
+.input-btn.input-btn-error input[type=file]:active + label {
+  background-color: #ab2424;
   color: #fff;
 }
 
 .input-btn.input-btn-error input[type=radio]:checked + label,
-.input-btn.input-btn-error input[type=checkbox]:checked + label {
-  background: #d94c4c;
+.input-btn.input-btn-error input[type=checkbox]:checked + label,
+.input-btn.input-btn-error input[type=file]:checked + label {
+  background-color: #d94c4c;
   color: #000;
 }
 
 .input-btn.input-btn-error input[type=radio]:focus + label,
-.input-btn.input-btn-error input[type=checkbox]:focus + label {
+.input-btn.input-btn-error input[type=checkbox]:focus + label,
+.input-btn.input-btn-error input[type=file]:focus + label {
   outline: 1px dotted #fff;
   outline-offset: -3px;
 }
 
 .input-btn.input-btn-error:hover input[type=radio] + label,
 .input-btn.input-btn-error:hover input[type=checkbox] + label {
-  background: #ab2424;
+  background-color: #ab2424;
   color: #fff;
+}
+
+.input-btn.input-btn-block {
+  display: block;
+}
+
+.input-btn.input-btn-block + label {
+  display: block;
 }
 
 .btn-bar {
   display: flex;
-  border-radius: 1em;
+  border: 1px solid white;
+  border-radius: 1.5em;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   margin: 1em 0;
 }
@@ -3367,12 +3421,12 @@ fieldset legend {
 
 .btn-bar .btn:first-child,
 .btn-bar .input-btn:first-child input + label {
-  border-radius: 1em 0 0 1em;
+  border-radius: 1.5em 0 0 1.5em;
 }
 
 .btn-bar .btn:last-child,
 .btn-bar .input-btn:last-child input + label {
-  border-radius: 0 1em 1em 0;
+  border-radius: 0 1.5em 1.5em 0;
 }
 
 .container-fluid {
@@ -5519,7 +5573,7 @@ fieldset legend {
 
 .table.table-default thead,
 .table.table-default tfoot {
-  background: #e0e0e0;
+  background-color: #e0e0e0;
   color: #000;
 }
 
@@ -5544,7 +5598,7 @@ fieldset legend {
 }
 
 .table.table-default.table-rows tbody tr:nth-child(even) {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .table.table-default.table-bordered tbody th, .table.table-default.table-bordered tbody td {
@@ -5553,7 +5607,7 @@ fieldset legend {
 
 .table.table-primary thead,
 .table.table-primary tfoot {
-  background: #1976d2;
+  background-color: #1976d2;
   color: #FFF;
 }
 
@@ -5578,7 +5632,7 @@ fieldset legend {
 }
 
 .table.table-primary.table-rows tbody tr:nth-child(even) {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .table.table-primary.table-bordered tbody th, .table.table-primary.table-bordered tbody td {
@@ -5587,7 +5641,7 @@ fieldset legend {
 
 .table.table-secondary thead,
 .table.table-secondary tfoot {
-  background: #388e3c;
+  background-color: #388e3c;
   color: #FFF;
 }
 
@@ -5612,7 +5666,7 @@ fieldset legend {
 }
 
 .table.table-secondary.table-rows tbody tr:nth-child(even) {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .table.table-secondary.table-bordered tbody th, .table.table-secondary.table-bordered tbody td {
@@ -5621,7 +5675,7 @@ fieldset legend {
 
 .table.table-warning thead,
 .table.table-warning tfoot {
-  background: #fbc02d;
+  background-color: #fbc02d;
   color: #000;
 }
 
@@ -5646,7 +5700,7 @@ fieldset legend {
 }
 
 .table.table-warning.table-rows tbody tr:nth-child(even) {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .table.table-warning.table-bordered tbody th, .table.table-warning.table-bordered tbody td {
@@ -5655,7 +5709,7 @@ fieldset legend {
 
 .table.table-alert thead,
 .table.table-alert tfoot {
-  background: #ffa000;
+  background-color: #ffa000;
   color: #000;
 }
 
@@ -5680,7 +5734,7 @@ fieldset legend {
 }
 
 .table.table-alert.table-rows tbody tr:nth-child(even) {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .table.table-alert.table-bordered tbody th, .table.table-alert.table-bordered tbody td {
@@ -5689,7 +5743,7 @@ fieldset legend {
 
 .table.table-error thead,
 .table.table-error tfoot {
-  background: #d32f2f;
+  background-color: #d32f2f;
   color: #FFF;
 }
 
@@ -5714,7 +5768,7 @@ fieldset legend {
 }
 
 .table.table-error.table-rows tbody tr:nth-child(even) {
-  background: #f8f8f8;
+  background-color: #f8f8f8;
 }
 
 .table.table-error.table-bordered tbody th, .table.table-error.table-bordered tbody td {
@@ -5735,56 +5789,110 @@ fieldset legend {
 }
 
 .table.table-hover tbody tr:hover th, .table.table-hover tbody tr:hover td {
-  background: #f3f3f3;
+  background-color: #f3f3f3;
   color: #000;
 }
 
-[role="tablist"] {
+.tabs[role="tablist"] {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
 }
 
-[role="tablist"] > li {
-  animation-duration: 0.001s;
-  animation-name: nodeInserted;
-}
-
-[role="tablist"] > li > a {
+.tabs[role="tablist"] > li > a {
   display: block;
   padding: 7px 10px;
   text-decoration: none;
-  border: 1px solid #000;
+  border: 1px solid white;
+  background-color: #f8f8f8;
+  color: #000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-[role="tablist"] > li > a[aria-selected="true"] {
-  font-weight: 700;
+.tabs[role="tablist"] > li > a[aria-selected="true"] {
+  color: #fff;
+  background-color: #333;
+  box-shadow: none;
 }
 
-[role="tablist"].tabs-horizontal {
+.tabs[role="tablist"] > li > a:not([aria-selected="true"]):focus, .tabs[role="tablist"] > li > a:not([aria-selected="true"]):hover {
+  color: #000;
+  background-color: #fff;
+}
+
+.tabs[role="tablist"] > li > a:focus {
+  outline: 1px dotted #fff;
+  outline-offset: -3px;
+}
+
+.tabs[role="tablist"].tabs-horizontal {
   flex-direction: row;
 }
 
-[role="tablist"].tabs-horizontal > li > a {
-  border-radius: 12px 12px 0 0;
+.tabs[role="tablist"].tabs-horizontal > li {
+  margin: 0 2px;
 }
 
-[role="tablist"].tabs-vertical {
+.tabs[role="tablist"].tabs-horizontal > li > a {
+  border-radius: 4px 4px 0 0;
+  border-bottom: none;
+}
+
+.tabs[role="tablist"].tabs-horizontal.tabs-bottom > li > a {
+  border-radius: 0 0 4px 4px;
+  border-top: none;
+  border-bottom: 1px solid white;
+}
+
+.tabs[role="tablist"].tabs-vertical {
   flex-direction: column;
 }
 
-[role="tablist"].tabs-vertical > li > a {
-  border-radius: 12px 0 0 12px;
+.tabs[role="tablist"].tabs-vertical > li {
+  margin: 2px 0;
 }
 
-[role="tabpanel"] {
+.tabs[role="tablist"].tabs-vertical > li > a {
+  border-radius: 4px 0 0 4px;
+  border-right: none;
+}
+
+.tabs[role="tablist"].tabs-vertical.tabs-right > li > a {
+  border-radius: 0 4px 4px 0;
+  border-left: none;
+  border-right: 1px solid white;
+}
+
+.tab-panels {
   min-height: 10em;
-  border: 1px solid #000;
+  border: 1px solid #333;
+  border-radius: 2px;
+  background-color: #fff;
+}
+
+.tab-panels.tab-panels-top {
+  border-top: 4px solid #333;
+}
+
+.tab-panels.tab-panels-left {
+  border-left: 4px solid #333;
+}
+
+.tab-panels.tab-panels-bottom {
+  border-bottom: 4px solid #333;
+}
+
+.tab-panels.tab-panels-right {
+  border-right: 4px solid #333;
+}
+
+.tab-panels [role="tabpanel"] {
+  color: #000;
   padding: 7px 10px;
 }
 
-[role="tabpanel"][aria-hidden="true"] {
+.tab-panels [role="tabpanel"][aria-hidden="true"] {
   display: none;
 }
 
@@ -5840,7 +5948,7 @@ fieldset legend {
   padding: 1em;
   margin: 2em 0;
   border-radius: 4px;
-  background: #f8f8f8;
+  background-color: #f8f8f8;
   color: #000;
 }
 
@@ -5990,7 +6098,7 @@ blockquote {
   background: #f8f8f8;
   color: #000;
   border: none;
-  border-radius: 1em;
+  border-radius: 2px;
   position: relative;
   quotes: "“" "”" "‘" "’";
 }

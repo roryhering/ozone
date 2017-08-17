@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <link href="../dist/css/ozone.min.css" rel="stylesheet" />
   <style>
-    [class^="col-"] {
+    fieldset [class^="col-"] {
       border: 1px dotted #aaa;
     }
   </style>
@@ -44,41 +44,89 @@
 
     <p>Tenderloin veniam consectetur nulla ut pancetta, quis aliquip sirloin officia. Picanha nostrud non dolor. Tempor brisket<sub>2</sub> laboris, picanha spare ribs qui pig nostrud swine meatloaf fatback shank aliquip. Aliqua frankfurter picanha ut landjaeger pork belly. Pork boudin dolore turkey, pork chop non shank bresaola burgdoggen elit dolore ham.</p>
 
+    <h2>TODO</h2>
+    <ul>
+      <li>Tabs</li>
+      <li>Dropdown menu</li>
+      <li>Nav menu</li>
+      <li>Tree menu?</li>
+      <li>Carousel</li>
+      <li>Expander</li>
+      <li>Modal</li>
+      <li>Toolbar</li>
+      <li>Notifications</li>
+    </ul>
+
     <h2>Tabs</h2>
 
-    <ul class="tabs tabs-horizontal tabs-left">
+    <ul id="tabs" class="tabs tabs-horizontal">
       <li><a href="#section1">Section 1</a></li>
       <li><a href="#section2">Section 2</a></li>
       <li><a href="#section3">Section 3</a></li>
-      <li><a href="#section10">Section 10</a></li>
     </ul>
-    <section id="section1">
+    <div class="tab-panels tab-panels-top">
+      <section id="section1">
 
-      <div class="row row-gutterless">
-        <div class="col-xs-12 col-sm-4">
-          <ul data-layer="tabs" class="tabs-vertical tabs-left">
-            <li><a href="#section4">Section 4</a></li>
-            <li><a href="#section5">Section 5</a></li>
-            <li><a href="#section6">Section 6</a></li>
-          </ul>
-        </div>
-        <div class="col-xs-12 col-sm-8">
-          <section id="section4">
-            <h3>Section 4</h3>
-          </section>
-          <section id="section5">Section 5</section>
-          <section id="section6">Section 6</section>
-        </div>
-      </div>
+        <h3>Tabs inside tabs</h3>
+        <div class="row row-gutterless">
+          <div class="col-xs-12 col-sm-2">
+            <ul data-ozone="tabs" class="tabs tabs-vertical">
+              <li><a href="#section4">Section 4</a></li>
+              <li><a href="#section5">Section 5</a></li>
+              <li><a href="#section6">Section 6</a></li>
+            </ul>
+          </div>
+          <div class="col-xs-12 col-sm-10">
+            <div class="tab-panels tab-panels-left">
+              <section id="section4">
 
-    </section>
-    <section id="section2">Section 2</section>
-    <section id="section3">Section 3</section>
-    <section id="section10">Section 10</section>
+                <h3>Tabs inside tabs inside tabs</h3>
+                <div class="tab-panels tab-panels-bottom">
+                  <section id="section7">
+
+                    <h3>Tabs inside tabs inside tabs inside tabs&hellip; again</h3>
+                    <div class="row row-gutterless">
+                      <div class="col-xs-12 col-sm-10">
+                        <div class="tab-panels tab-panels-right">
+                          <section id="section10">Section 10</section>
+                          <section id="section11">Section 11</section>
+                          <section id="section12">Section 12</section>
+                        </div>
+                      </div>
+                      <div class="col-xs-12 col-sm-2">
+                        <ul data-ozone="tabs" data-ozone-options="{ show: 2, watch: false }" class="tabs tabs-vertical tabs-right">
+                          <li><a href="#section10">Section 10</a></li>
+                          <li><a href="#section11">Section 11</a></li>
+                          <li><a href="#section12">Section 12</a></li>
+                        </ul>
+                      </div>
+                    </div>
+
+                  </section>
+                  <section id="section8">Section 8</section>
+                  <section id="section9">Section 9</section>
+                </div>
+                <ul data-ozone="tabs" class="tabs tabs-horizontal tabs-bottom tabs-right">
+                  <li><a href="#section7">Section 7</a></li>
+                  <li><a href="#section8">Section 8</a></li>
+                  <li><a href="#section9">Section 9</a></li>
+                </ul>
+
+              </section>
+              <section id="section5">Section 5</section>
+              <section id="section6">Section 6</section>
+            </div>
+          </div>
+        </div>
+
+      </section>
+      <section id="section2">Section 2</section>
+      <section id="section3">Section 3</section>
+    </div>
 
     <h2>Menu button</h2>
 
-    <div class="" data-layer="menu">
+    <div class="" data-ozone="menu">
       <button class="btn btn-default">Menu</button>
       <ul>
         <li>
@@ -141,14 +189,14 @@
         <div class="row">
           <div class="col-sm-4">
             <span class="input-combo">
-              <input class="input" type="text" name="percent" />
+              <input class="input input-block" type="text" name="percent" />
               <span class="symbol">%</span>
             </span>
           </div>
           <div class="col-sm-4">
             <span class="input-combo">
               <span class="symbol">$</span>
-              <input class="input" type="text" name="percent" />
+              <input class="input input-block" type="text" name="percent" />
             </span>
           </div>
           <div class="col-sm-4">
@@ -180,15 +228,20 @@
         <div class="stacked">
           <label for="state">State</label>
           <select class="input" id="state">
-            <option selected>AL</option>
-            <option>CA</option>
-            <option>IL</option>
+            <option selected>Australian Capital Territory</option>
+            <option>New South Wales</option>
+            <option>Northern Territory</option>
+            <option>Queensland</option>
+            <option>South Australia</option>
+            <option>Tasmania</option>
+            <option>Victoria</option>
+            <option>Western Australia</option>
           </select>
         </div>
 
         <div class="stacked">
           <label for="remember2">
-          <input id="remember2" type="checkbox"> Remember me
+            <input id="remember2" type="checkbox"> Remember me
           </label>
         </div>
 
@@ -397,6 +450,22 @@
           <button type="submit" class="btn btn-alert equal-width"><i class="fa fa-warning fa-fw" aria-hidden="true"></i> Alert</button>
           <button type="submit" class="btn btn-error equal-width"><i class="fa fa-bomb fa-fw" aria-hidden="true"></i> Error</button>
         </div>
+
+        <h2>File selection</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+            <input id="file" type="file" />
+            <label for="file">Select file</label>
+          </div>
+          <div class="col-md-6">
+            <span class="input-btn input-btn-default input-btn-block">
+              <input id="file2" type="file" />
+              <label for="file2">Select file</label>
+            </span>
+          </div>
+        </div>
+
       </fieldset>
     </form>
 
@@ -609,7 +678,10 @@
 
       */
 
-      o3.find('.tabs').tabs()
+      o3.find('#tabs').tabs()
+
+      o3.find('#tabs').append('<li><a href="#section001">New section</a></li>')
+      o3.find('.tab-panels').get(0).append('<section id="section001">Section 12</section>')
 
       // console.log( o3.find('nav').rect() )
 

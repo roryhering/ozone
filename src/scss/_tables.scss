@@ -6,7 +6,7 @@
     &.table-#{$name} {
       thead,
       tfoot {
-        background: #{$colour};
+        background-color: #{$colour};
         color: contrast($colour);
 
         th {
@@ -32,7 +32,7 @@
       &.table-rows {
         tbody {
           tr:nth-child(even) {
-            background: $table-alt-bg;
+            background-color: $table-alt-bg;
           }
         }
       }
@@ -65,7 +65,7 @@
   &.table-hover {
     tbody tr:hover {
       th, td {
-        background: darken($table-alt-bg, 2);
+        background-color: darken($table-alt-bg, 2);
         color: contrast(darken($table-alt-bg, 2));
       }
     }
