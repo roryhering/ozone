@@ -94,7 +94,7 @@
                         </div>
                       </div>
                       <div class="col-xs-12 col-sm-2">
-                        <ul data-ozone="tabs" data-ozone-options="{ show: 2, watch: false }" class="tabs tabs-vertical tabs-right">
+                        <ul data-ozone="tabs" data-ozone-options="{ show: 2, static: true }" class="tabs tabs-vertical tabs-right">
                           <li><a href="#section10">Section 10</a></li>
                           <li><a href="#section11">Section 11</a></li>
                           <li><a href="#section12">Section 12</a></li>
@@ -678,7 +678,8 @@
 
       */
 
-      o3.find('#tabs').tabs()
+      o3.find('#tabs').tabs({ show: 1 })
+      // o3.find('.tabs').tabs() // test for multiple creations on the same elements
 
       o3.find('#tabs').append('<li><a href="#section001">New section</a></li>')
       o3.find('.tab-panels').get(0).append('<section id="section001">Section 12</section>')

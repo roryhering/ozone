@@ -1,7 +1,3 @@
-/*
- * https://developer.mozilla.org/en-US/docs/Web/API/Element/closest
- */
-
 (function() {
   if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector
@@ -18,9 +14,7 @@
       }
     }
   }
-})(),
 
-(function () {
   if (typeof Array.prototype.indexOf !== 'function') {
     Array.prototype.indexOf = function (item) {
       for (let i = 0; i < this.length; ++i) {
@@ -31,6 +25,7 @@
       return -1
     }
   }
+
 })(),
 
 /*
@@ -89,8 +84,7 @@ window.o3 = (function () {
 
   const VERSION = '0.0.1'
 
-  let _settings = {
-    showConsole: false,
+  const _settings = {
     eventPrefix: 'o3',
     dataAttr: 'ozone',
     dataAttrTabs: 'tabs',
@@ -113,13 +107,6 @@ window.o3 = (function () {
 
   if (!Element.prototype.matches) {
     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector
-  }
-
-  let styles = {
-    'start': 'background: blue; color: white; padding: 3px 10px; display: block;',
-    'end': 'background: black; color: white; padding: 3px 10px; display: block;',
-    'log': 'color: green; padding: 3px 10px; display: block;',
-    'error': 'color: red; padding: 3px 10px; display: block;'
   }
 
   // Internal debounce handler
@@ -165,7 +152,7 @@ window.o3 = (function () {
 
   let observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
-      console.log('mutation', mutation)
+      triggerMutationHandler(mutation.target)
     })
   })
   let observerConfig = {
@@ -174,6 +161,20 @@ window.o3 = (function () {
   }
 
   let mutationElements = []
+
+  function isMutationUnique(el) {
+    return mutationElements.filter((obj) => {
+      return el[0].isEqualNode(obj.target[0])
+    })
+  }
+
+  function triggerMutationHandler(el) {
+    mutationElements.filter((obj) => {
+      if (el.isEqualNode(obj.target[0])) {
+        obj.target[obj.handler](obj.options)
+      }
+    })
+  }
 
   /* =====
    * UTILS
@@ -200,15 +201,29 @@ window.o3 = (function () {
   }
 
   Ozone.prototype.mutation = function (handler, options) {
-    mutationElements.push({
-      target: this,
-      options: options,
-      handler: handler
-    })
-    console.log('mutationElements', mutationElements)
-    return this.forEach((el) => {
-      observer.observe(el, observerConfig)
-    })
+    if (isMutationUnique(this)) {
+      mutationElements.push({
+        target: this,
+        options: options,
+        handler: handler
+      })
+      return this.forEach((el) => {
+        observer.observe(el, observerConfig)
+      })
+    }
+    return this
+  }
+
+  Ozone.prototype.removeMutation = function (handler) {
+    if (isMutationUnique(this)) {
+      mutationElements.filter((obj) => {
+        console.log(obj, this, handler)
+      })
+      /* return this.forEach((el) => {
+        observer.observe(el, observerConfig)
+      }) */
+    }
+    return this
   }
 
   Ozone.prototype.rect = function () {
@@ -300,7 +315,11 @@ window.o3 = (function () {
       return this.forEach((el) => {
         for (let key in attr) {
           if (attr.hasOwnProperty(key)) {
-            el.setAttribute(key.toString(), attr[key])
+            if (attr[key] === null) {
+              el.removeAttribute(key.toString())
+            } else {
+              el.setAttribute(key.toString(), attr[key])
+            }
           }
         }
       })
@@ -308,7 +327,11 @@ window.o3 = (function () {
       // String instead of object
       if (typeof val !== 'undefined') {
         return this.forEach((el) => {
-          el.setAttribute(attr, val)
+          if (val === null) {
+            el.removeAttribute(attr)
+          } else {
+            el.setAttribute(attr, val)
+          }
         })
       } else {
         return this.mapOne((el) => {
@@ -468,6 +491,19 @@ window.o3 = (function () {
     return this
   }
 
+  Ozone.prototype.siblings = function() {
+    let current = this[0]
+    let parent = current.parentNode
+    let siblings = []
+    for (let i = 0, imax = parent.children.length; i < imax; ++i) {
+      let el = parent.children[i]
+      if (!el.isEqualNode(current)) {
+        siblings.push(el)
+      }
+    }
+    return new Ozone(siblings)
+  }
+
   Ozone.prototype.focus = function() {
     this[0].focus()
     return this
@@ -516,19 +552,7 @@ window.o3 = (function () {
       }
       return el
     },
-    settings: (opts) => {
-      if (typeof opts === 'object') {
-        for (let i in _settings) {
-          if (_settings[i] && opts[i]) {
-            _settings[i] = opts[i]
-          }
-        }
-
-        if (_settings.showConsole) {
-          console.log('%cOZONE: New options', styles.log)
-          console.log(_settings)
-        }
-      }
+    settings: () => {
       return _settings
     },
     ext: (name, fn) => {
@@ -555,6 +579,11 @@ window.o3 = (function () {
             fn()
         })
       }
+    },
+    optionsToJSON: function(string) {
+      string = string.replace(/\s/g,'')
+      string = string.replace(/(\s*?{\s*?|\s*?,\s*?)(['"])?([a-zA-Z0-9]+)(['"])?:/g, '$1"$3":')
+      return JSON.parse(string)
     },
     system: _system,
     version: VERSION

@@ -5977,7 +5977,7 @@ fieldset legend {
 }
 
 body {
-  font-size: 90%;
+  font-size: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   line-height: 1.6;
 }
@@ -6006,7 +6006,7 @@ h1, .h1 {
   line-height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 198%;
+  font-size: 220%;
   margin: 1.1em 0 1.1em 0;
 }
 
@@ -6014,7 +6014,7 @@ h2, .h2 {
   line-height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 171%;
+  font-size: 190%;
   margin: 0.95em 0 0.95em 0;
 }
 
@@ -6022,7 +6022,7 @@ h3, .h3 {
   line-height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 144%;
+  font-size: 160%;
   margin: 0.8em 0 0.8em 0;
 }
 
@@ -6030,7 +6030,7 @@ h4, .h4 {
   line-height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 117%;
+  font-size: 130%;
   margin: 0.65em 0 0.65em 0;
 }
 
@@ -6038,7 +6038,7 @@ h5, .h5 {
   line-height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 90%;
+  font-size: 100%;
   margin: 0.5em 0 0.5em 0;
 }
 
@@ -6046,7 +6046,7 @@ h6, .h6 {
   line-height: 100%;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-weight: 700;
-  font-size: 63%;
+  font-size: 70%;
   margin: 0.35em 0 0.35em 0;
 }
 
