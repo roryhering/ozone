@@ -127,6 +127,7 @@ $input-focus-time: 0.1s;
 $input-border: 1px solid #aaa;
 $input-border-radius: 4px;
 $input-focus-border: 1px solid colour('blue', '900');
+$input-required-col: red;
 
 $fieldset-border: 1px solid black;
 $fieldset-border-radius: 2px;
@@ -177,10 +178,13 @@ $radio-vertical-align: top;
 
 $button-weight: bold;
 $button-padding: 5px 15px;
-$button-border: 1px solid white;
-$button-border-radius: 1.5em;
+$button-border: none;
+$button-border-radius: 2px;
 $button-invert-border-width: 2px;
 $button-bar-margin: 1em 0;
+
+$button-active-zindex: 10;
+$button-active-scale: 1.1;
 
 /*
  * CALLOUTS

@@ -70,7 +70,7 @@
       })
 
       // Connect each link to their element
-      tablist.find(':scope > li a').forEach((el) => {
+      tablist.find(':scope > li a:not([role="tab"]').forEach((el) => {
 
         el = o3.find(el)
 
@@ -83,8 +83,6 @@
           })
 
           el.on('click', (event) => {
-
-            console.log('click', event)
 
             event.preventDefault()
             let tab = o3.find(event.target)

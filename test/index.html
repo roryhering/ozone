@@ -172,7 +172,7 @@
       <fieldset>
         <legend>A compact inline form</legend>
 
-        <input class="input" type="email" placeholder="Email" aria-label="Email">
+        <input class="input" type="email" placeholder="Email" aria-label="Email" pattern="[^@]*@[^@]">
         <input class="input" type="password" placeholder="Password" aria-label="Password">
 
         <label for="remember">
@@ -216,7 +216,7 @@
 
         <div class="stacked">
           <label for="email">Email</label>
-          <input class="input" id="email" type="email" placeholder="Email" required>
+          <input class="input" id="email" type="email" placeholder="Email" pattern="[^@]*@[^@]" required>
           <span>This is a required field.</span>
         </div>
 
@@ -272,7 +272,7 @@
         <div class="row row-gutterless">
           <label class="col-sm-4" for="email">Email Address</label>
           <div class="col-sm-8">
-            <input class="input" id="email" type="email" placeholder="Email Address">
+            <input class="input" id="email" type="email" placeholder="Email Address" pattern="[^@]*@[^@]">
           </div>
         </div>
 
@@ -379,7 +379,7 @@
 
         <h2>Checkbox inputs as buttons in a bar</h2>
 
-        <div class="btn-bar equal-width">
+        <div class="btn-bar">
           <span class="input-btn input-btn-default">
             <input id="cb9" type="checkbox" value="apples" checked>
             <label for="cb9">Apples</label>

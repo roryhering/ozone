@@ -2754,12 +2754,18 @@ th {
   box-shadow: inset 0 0 0 -1px #1976d2;
   background-color: white;
   color: #000;
+  min-width: 0;
   transition: box-shadow 0.1s;
 }
 
 .input:focus {
   border: 1px solid #0d47a1;
   box-shadow: inset 0 0 0 2px #1976d2;
+}
+
+.input:required {
+  background-image: radial-gradient(0.3em at 100% 50%, red 99%, white 100%);
+  background-repeat: no-repeat;
 }
 
 .input.input-block {
@@ -2839,8 +2845,10 @@ label[class^="col-"] {
 .input-btn input[type=file] {
   position: absolute;
   width: 1px;
-  height: 1px;
+  height: 100%;
   padding: 0;
+  top: 0;
+  bottom: 0;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -2988,21 +2996,27 @@ fieldset legend {
   font-weight: bold;
   display: inline-block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .btn.btn-default {
   background-color: #e0e0e0;
   color: #000;
+  transition: transform 0.1s;
 }
 
 .btn.btn-default:hover, .btn.btn-default:focus, .btn.btn-default:active {
   background-color: #c7c7c7;
   color: #000;
+}
+
+.btn.btn-default:active {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .btn.btn-default:focus {
@@ -3013,11 +3027,17 @@ fieldset legend {
 .btn.btn-primary {
   background-color: #1976d2;
   color: #FFF;
+  transition: transform 0.1s;
 }
 
 .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
   background-color: #145ca4;
   color: #fff;
+}
+
+.btn.btn-primary:active {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .btn.btn-primary:focus {
@@ -3028,11 +3048,17 @@ fieldset legend {
 .btn.btn-secondary {
   background-color: #388e3c;
   color: #FFF;
+  transition: transform 0.1s;
 }
 
 .btn.btn-secondary:hover, .btn.btn-secondary:focus, .btn.btn-secondary:active {
   background-color: #2a692d;
   color: #fff;
+}
+
+.btn.btn-secondary:active {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .btn.btn-secondary:focus {
@@ -3043,11 +3069,17 @@ fieldset legend {
 .btn.btn-warning {
   background-color: #fbc02d;
   color: #000;
+  transition: transform 0.1s;
 }
 
 .btn.btn-warning:hover, .btn.btn-warning:focus, .btn.btn-warning:active {
   background-color: #f0ad05;
   color: #000;
+}
+
+.btn.btn-warning:active {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .btn.btn-warning:focus {
@@ -3058,11 +3090,17 @@ fieldset legend {
 .btn.btn-alert {
   background-color: #ffa000;
   color: #000;
+  transition: transform 0.1s;
 }
 
 .btn.btn-alert:hover, .btn.btn-alert:focus, .btn.btn-alert:active {
   background-color: #cc8000;
   color: #FFF;
+}
+
+.btn.btn-alert:active {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .btn.btn-alert:focus {
@@ -3073,11 +3111,17 @@ fieldset legend {
 .btn.btn-error {
   background-color: #d32f2f;
   color: #FFF;
+  transition: transform 0.1s;
 }
 
 .btn.btn-error:hover, .btn.btn-error:focus, .btn.btn-error:active {
   background-color: #ab2424;
   color: #fff;
+}
+
+.btn.btn-error:active {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .btn.btn-error:focus {
@@ -3112,15 +3156,16 @@ fieldset legend {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   background-color: #e0e0e0;
   color: #000;
+  transition: transform 0.1s;
 }
 
 .input-btn.input-btn-default input[type=radio]:focus + label, .input-btn.input-btn-default input[type=radio]:active + label,
@@ -3130,6 +3175,13 @@ fieldset legend {
 .input-btn.input-btn-default input[type=file]:active + label {
   background-color: #c7c7c7;
   color: #000;
+}
+
+.input-btn.input-btn-default input[type=radio]:active + label,
+.input-btn.input-btn-default input[type=checkbox]:active + label,
+.input-btn.input-btn-default input[type=file]:active + label {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .input-btn.input-btn-default input[type=radio]:checked + label,
@@ -3146,8 +3198,15 @@ fieldset legend {
   outline-offset: -3px;
 }
 
+.input-btn.input-btn-default input[type=radio]:disabled + label,
+.input-btn.input-btn-default input[type=checkbox]:disabled + label,
+.input-btn.input-btn-default input[type=file]:disabled + label {
+  opacity: 0.4;
+}
+
 .input-btn.input-btn-default:hover input[type=radio] + label,
-.input-btn.input-btn-default:hover input[type=checkbox] + label {
+.input-btn.input-btn-default:hover input[type=checkbox] + label,
+.input-btn.input-btn-default:hover input[type=file] + label {
   background-color: #c7c7c7;
   color: #000;
 }
@@ -3158,15 +3217,16 @@ fieldset legend {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   background-color: #1976d2;
   color: #FFF;
+  transition: transform 0.1s;
 }
 
 .input-btn.input-btn-primary input[type=radio]:focus + label, .input-btn.input-btn-primary input[type=radio]:active + label,
@@ -3176,6 +3236,13 @@ fieldset legend {
 .input-btn.input-btn-primary input[type=file]:active + label {
   background-color: #145ca4;
   color: #fff;
+}
+
+.input-btn.input-btn-primary input[type=radio]:active + label,
+.input-btn.input-btn-primary input[type=checkbox]:active + label,
+.input-btn.input-btn-primary input[type=file]:active + label {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .input-btn.input-btn-primary input[type=radio]:checked + label,
@@ -3192,8 +3259,15 @@ fieldset legend {
   outline-offset: -3px;
 }
 
+.input-btn.input-btn-primary input[type=radio]:disabled + label,
+.input-btn.input-btn-primary input[type=checkbox]:disabled + label,
+.input-btn.input-btn-primary input[type=file]:disabled + label {
+  opacity: 0.4;
+}
+
 .input-btn.input-btn-primary:hover input[type=radio] + label,
-.input-btn.input-btn-primary:hover input[type=checkbox] + label {
+.input-btn.input-btn-primary:hover input[type=checkbox] + label,
+.input-btn.input-btn-primary:hover input[type=file] + label {
   background-color: #145ca4;
   color: #fff;
 }
@@ -3204,15 +3278,16 @@ fieldset legend {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   background-color: #388e3c;
   color: #FFF;
+  transition: transform 0.1s;
 }
 
 .input-btn.input-btn-secondary input[type=radio]:focus + label, .input-btn.input-btn-secondary input[type=radio]:active + label,
@@ -3222,6 +3297,13 @@ fieldset legend {
 .input-btn.input-btn-secondary input[type=file]:active + label {
   background-color: #2a692d;
   color: #fff;
+}
+
+.input-btn.input-btn-secondary input[type=radio]:active + label,
+.input-btn.input-btn-secondary input[type=checkbox]:active + label,
+.input-btn.input-btn-secondary input[type=file]:active + label {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .input-btn.input-btn-secondary input[type=radio]:checked + label,
@@ -3238,8 +3320,15 @@ fieldset legend {
   outline-offset: -3px;
 }
 
+.input-btn.input-btn-secondary input[type=radio]:disabled + label,
+.input-btn.input-btn-secondary input[type=checkbox]:disabled + label,
+.input-btn.input-btn-secondary input[type=file]:disabled + label {
+  opacity: 0.4;
+}
+
 .input-btn.input-btn-secondary:hover input[type=radio] + label,
-.input-btn.input-btn-secondary:hover input[type=checkbox] + label {
+.input-btn.input-btn-secondary:hover input[type=checkbox] + label,
+.input-btn.input-btn-secondary:hover input[type=file] + label {
   background-color: #2a692d;
   color: #fff;
 }
@@ -3250,15 +3339,16 @@ fieldset legend {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   background-color: #fbc02d;
   color: #000;
+  transition: transform 0.1s;
 }
 
 .input-btn.input-btn-warning input[type=radio]:focus + label, .input-btn.input-btn-warning input[type=radio]:active + label,
@@ -3268,6 +3358,13 @@ fieldset legend {
 .input-btn.input-btn-warning input[type=file]:active + label {
   background-color: #f0ad05;
   color: #000;
+}
+
+.input-btn.input-btn-warning input[type=radio]:active + label,
+.input-btn.input-btn-warning input[type=checkbox]:active + label,
+.input-btn.input-btn-warning input[type=file]:active + label {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .input-btn.input-btn-warning input[type=radio]:checked + label,
@@ -3284,8 +3381,15 @@ fieldset legend {
   outline-offset: -3px;
 }
 
+.input-btn.input-btn-warning input[type=radio]:disabled + label,
+.input-btn.input-btn-warning input[type=checkbox]:disabled + label,
+.input-btn.input-btn-warning input[type=file]:disabled + label {
+  opacity: 0.4;
+}
+
 .input-btn.input-btn-warning:hover input[type=radio] + label,
-.input-btn.input-btn-warning:hover input[type=checkbox] + label {
+.input-btn.input-btn-warning:hover input[type=checkbox] + label,
+.input-btn.input-btn-warning:hover input[type=file] + label {
   background-color: #f0ad05;
   color: #000;
 }
@@ -3296,15 +3400,16 @@ fieldset legend {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   background-color: #ffa000;
   color: #000;
+  transition: transform 0.1s;
 }
 
 .input-btn.input-btn-alert input[type=radio]:focus + label, .input-btn.input-btn-alert input[type=radio]:active + label,
@@ -3314,6 +3419,13 @@ fieldset legend {
 .input-btn.input-btn-alert input[type=file]:active + label {
   background-color: #cc8000;
   color: #FFF;
+}
+
+.input-btn.input-btn-alert input[type=radio]:active + label,
+.input-btn.input-btn-alert input[type=checkbox]:active + label,
+.input-btn.input-btn-alert input[type=file]:active + label {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .input-btn.input-btn-alert input[type=radio]:checked + label,
@@ -3330,8 +3442,15 @@ fieldset legend {
   outline-offset: -3px;
 }
 
+.input-btn.input-btn-alert input[type=radio]:disabled + label,
+.input-btn.input-btn-alert input[type=checkbox]:disabled + label,
+.input-btn.input-btn-alert input[type=file]:disabled + label {
+  opacity: 0.4;
+}
+
 .input-btn.input-btn-alert:hover input[type=radio] + label,
-.input-btn.input-btn-alert:hover input[type=checkbox] + label {
+.input-btn.input-btn-alert:hover input[type=checkbox] + label,
+.input-btn.input-btn-alert:hover input[type=file] + label {
   background-color: #cc8000;
   color: #FFF;
 }
@@ -3342,15 +3461,16 @@ fieldset legend {
   text-align: center;
   display: block;
   text-decoration: none;
-  border: 1px solid white;
+  border: none;
   padding: 5px 15px;
   white-space: normal;
-  border-radius: 1.5em;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   font-weight: bold;
   background-color: #d32f2f;
   color: #FFF;
+  transition: transform 0.1s;
 }
 
 .input-btn.input-btn-error input[type=radio]:focus + label, .input-btn.input-btn-error input[type=radio]:active + label,
@@ -3360,6 +3480,13 @@ fieldset legend {
 .input-btn.input-btn-error input[type=file]:active + label {
   background-color: #ab2424;
   color: #fff;
+}
+
+.input-btn.input-btn-error input[type=radio]:active + label,
+.input-btn.input-btn-error input[type=checkbox]:active + label,
+.input-btn.input-btn-error input[type=file]:active + label {
+  transform: scaleX(1.1) scaleY(1.1);
+  z-index: 10;
 }
 
 .input-btn.input-btn-error input[type=radio]:checked + label,
@@ -3376,8 +3503,15 @@ fieldset legend {
   outline-offset: -3px;
 }
 
+.input-btn.input-btn-error input[type=radio]:disabled + label,
+.input-btn.input-btn-error input[type=checkbox]:disabled + label,
+.input-btn.input-btn-error input[type=file]:disabled + label {
+  opacity: 0.4;
+}
+
 .input-btn.input-btn-error:hover input[type=radio] + label,
-.input-btn.input-btn-error:hover input[type=checkbox] + label {
+.input-btn.input-btn-error:hover input[type=checkbox] + label,
+.input-btn.input-btn-error:hover input[type=file] + label {
   background-color: #ab2424;
   color: #fff;
 }
@@ -3392,8 +3526,8 @@ fieldset legend {
 
 .btn-bar {
   display: flex;
-  border: 1px solid white;
-  border-radius: 1.5em;
+  border: none;
+  border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   margin: 1em 0;
 }
@@ -3421,12 +3555,12 @@ fieldset legend {
 
 .btn-bar .btn:first-child,
 .btn-bar .input-btn:first-child input + label {
-  border-radius: 1.5em 0 0 1.5em;
+  border-radius: 2px 0 0 2px;
 }
 
 .btn-bar .btn:last-child,
 .btn-bar .input-btn:last-child input + label {
-  border-radius: 0 1.5em 1.5em 0;
+  border-radius: 0 2px 2px 0;
 }
 
 .container-fluid {
@@ -6063,24 +6197,20 @@ ol, ul {
 
 ul {
   list-style-type: disc;
-  list-style-position: inside;
 }
 
 ol {
   list-style-type: decimal;
-  list-style-position: inside;
 }
 
 ul ul, ol ul {
   list-style-type: circle;
-  list-style-position: inside;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 
 ol ol, ul ol {
   list-style-type: lower-latin;
-  list-style-position: inside;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }

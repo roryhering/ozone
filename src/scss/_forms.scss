@@ -11,12 +11,18 @@
   box-shadow: inset 0 0 0 -1px $input-focus;
   background-color: $input-bg;
   color: $input-col;
+  min-width: 0;
 
   transition: box-shadow $input-focus-time;
 
   &:focus {
     border: $input-focus-border;
     box-shadow: inset 0 0 0 2px $input-focus;
+  }
+
+  &:required {
+    background-image: radial-gradient(0.3em at 100% 50%, $input-required-col 99%, $input-bg 100%);
+    background-repeat: no-repeat;
   }
 
   &.input-block {
@@ -90,8 +96,10 @@ label {
   input[type=file] {
     position: absolute;
     width: 1px;
-    height: 1px;
+    height: 100%;
     padding: 0;
+    top: 0;
+    bottom: 0;
     overflow: hidden;
     clip: rect(0,0,0,0);
     white-space: nowrap;

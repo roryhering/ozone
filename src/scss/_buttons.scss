@@ -15,12 +15,18 @@
     &.btn-#{$name} {
       background-color: #{$colour};
       color: contrast($colour);
+      transition: transform 0.1s;
 
       &:hover,
       &:focus,
       &:active {
         background-color: darken($colour, 10);
         color: contrast(darken($colour, 10));
+      }
+
+      &:active {
+        transform: scaleX($button-active-scale) scaleY($button-active-scale);
+        z-index: $button-active-zindex;
       }
 
       &:focus {
@@ -71,6 +77,8 @@
 
           background-color: #{$colour};
           color: contrast($colour);
+
+          transition: transform 0.1s;
         }
 
         &:focus,
@@ -78,6 +86,13 @@
           & + label {
             background-color: darken($colour, 10);
             color: contrast(darken($colour, 10));
+          }
+        }
+
+        &:active {
+          & + label {
+            transform: scaleX($button-active-scale) scaleY($button-active-scale);
+            z-index: $button-active-zindex;
           }
         }
 
@@ -94,11 +109,18 @@
             outline-offset: -3px;
           }
         }
+
+        &:disabled {
+          & + label {
+            opacity: 0.4;
+          }
+        }
       }
 
       &:hover {
         input[type=radio],
-        input[type=checkbox] {
+        input[type=checkbox],
+        input[type=file] {
           & + label {
             background-color: darken($colour, 10);
             color: contrast(darken($colour, 10));
